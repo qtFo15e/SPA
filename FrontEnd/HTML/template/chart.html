@@ -1,0 +1,96 @@
+<script type="tmpl" id="chart" class="tmpl">
+    <div class='container-fluid'>
+        <div class="row">
+            <h4 style="text-align: center" class='col-xs-12'>
+            <%-data.header.startTime%>至<%-data.header.endTime%>,
+            在
+            <%var detectedStationListLength = _.size( data.header.detectedStation )
+			_.each( data.header.detectedStation , function ( innerItem , index) {
+				if ( index === detectedStationListLength - 1) { %>
+				<%-innerItem%>
+					<%} else {%>
+				<%-innerItem + ","%>
+					<%}
+			})%>
+			监测站，
+
+            <%var detectedItmeListLength = _.size( data.header.detectedItmeList )
+			 _.each( data.header.detectedItmeList , function ( innerItem , index) {
+			 	if ( index === detectedItmeListLength - 1) { %>
+			 		<%-innerItem%>
+			 	<%} else {%>
+			 		<%-innerItem + ","%>
+			 	<%}
+			})%> 水质平均值分析。
+
+            </h4>
+        </div>
+
+        <%_.each( data.allUIData, function ( item ,index ) {
+				if (index === 0 ) {%>
+
+                    <article class="row">
+                        <main class="col-xs-12">
+                            <figure >
+                                <figcaption>
+                                    <h5 style="text-align: center">综合分析</h5>
+                                </figcaption>
+                                <canvas id='canvas<%-index%>' class="center-block" width="900" height="400"></canvas>
+                                <ul class="list-inline">
+                                    <%_.each( item.caption , function ( innerItem ) {%>
+                                         <li style="color: <%-innerItem.color.fillColor%>" > <%-innerItem.name%> </li>
+                                    <%})%>
+                                </ul>
+                            </figure>
+                        </main>
+                    </article>
+
+
+				<%} else if ( index % 2 === 1 ) {%>
+
+                    <div class="row">
+                    <div class="col-xs-6">
+					<article class="row">
+                        <main class="col-xs-8">
+                             <canvas id='canvas<%-index%>' class="center-block" width="280" height="400"></canvas>
+                        </main>
+                        <aside class="col-xs-4">
+                            <ul class="list-group">
+                                <li class="list-group-item">名称<h5 style="text-align: center"><%-item.caption%>含量<%-item.aside.intervalDay%>日平均值分析</h5></li>
+
+                                <%_.each(item.aside.waterlevel, function ( innerItem ) {%>
+					                <li class="list-group-item"><%-innerItem.name%><output><%-innerItem.relation%><%-innerItem.value%></output></li>
+				                <%})%>
+
+                                <li class="list-group-item">平均值<output class=""><%-item.aside.average%></output></li>
+                                <li class="list-group-item">单位<span><%-item.aside.unit%></span></li>
+                            </ul>
+                        </aside>
+                     </article>
+                     </div>
+				<%} else {%>
+
+				    <div class='col-xs-6'>
+				    <article class="row">
+                        <main class="col-xs-8">
+                             <canvas id='canvas<%-index%>' class="center-block" width="280" height="400"></canvas>
+                        </main>
+                        <aside class="col-xs-4">
+                            <ul class="list-group">
+                                <li class="list-group-item">名称<h5 style="text-align: center"><%-item.caption%>含量<%-item.aside.intervalDay%>日平均值分析</h5></li>
+
+                                <%_.each(item.aside.waterlevel, function ( innerItem ) {%>
+					                <li class="list-group-item"><%-innerItem.name%><output><%-innerItem.relation%><%-innerItem.value%></output></li>
+				                <%})%>
+
+                                <li class="list-group-item">平均值<output class=""><%-item.aside.average%></output></li>
+                                <li class="list-group-item">单位<span><%-item.aside.unit%></span></li>
+                            </ul>
+                        </aside>
+                    </article>
+                    </div>
+                    </div>
+				<%}
+		} )%>
+
+    </script>

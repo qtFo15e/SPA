@@ -1,0 +1,106 @@
+.watershed-li {
+    position: relative;
+
+    width: 10em;
+    height: 2em;
+    padding: 0.25em .8em;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    background-color: rgba( 0,0,0,0.25 );
+    background-clip: padding-box;
+
+
+    text-align: center;
+    /*待研究， line_height对的影响*/
+    /*line-height: 1;*/
+
+    cursor: pointer;
+}
+
+.watershed-li:hover > .detectedStation-ul {
+    display: block;
+}
+
+.detectedStation-ul {
+    display: none;
+    position: absolute;
+    z-index: 1;
+
+    top: calc( 2em - 2px );
+    /*由于是子元素,位置上处于嵌套关系,所以要平衡边框的宽度*/
+    left: -1px;
+    width: 12em;
+    border-top: 1px transparent solid;
+
+    transition: 2s;
+}
+
+
+
+.detectedStation-ul > li {
+    padding: 0.25em .8em;
+    background-color: #8ab7a0;
+    background-clip: padding-box;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    text-align: left;
+}
+
+.detectedStation-ul > li:hover {
+    background-color: #729A83;
+}
+
+#upload{
+    font-size: 1.1em;
+    height: 4em;
+    width: 6em;
+    padding: 0.4em 2.6em  0.4em 1.6em;
+    /*？？？？波浪效果*/
+    /*background:*/
+            /*linear-gradient( -45deg ,transparent 1em, #8ab7a0 0  ) ,*/
+            /*linear-gradient( -135deg, transparent 1em, #8ab7a0 0 ) ;*/
+    background:
+            linear-gradient( -45deg ,transparent 1.5em, #8ab7a0 0  ) bottom right,
+            linear-gradient( -135deg, transparent 1.5em, #8ab7a0 0 )  top right ;
+    background-size: 100% 50%;
+    background-repeat: no-repeat;
+    box-shadow: none ;
+    border: none !important;
+    border-radius: 5px;
+
+    vertical-align: middle;
+}
+
+#upload:focus, #upload:active {
+    outline: 0;
+}
+
+
+#upload:focus {
+    background:
+    linear-gradient( -45deg ,transparent 1.5em, #8ab7a0 0  ) top right,
+    linear-gradient( -135deg, transparent 1.5em, #8ab7a0 0 ) bottom right;
+    background-size: 100% 50%;
+    background-repeat: no-repeat;
+}
+
+#watershedLabel, #detectedStationLabel {
+    /*border: 1px solid #2B669A;*/
+}
+
+#uploadDataModal .label{
+    margin-top: 8px;
+    display: inline-block
+}
+
+#uploadDataModal .container-fluid > .row:first-child {
+    padding-top: 10px;
+}
+
+#uploadDataModal .container-fluid > .row:first-child > .col-xs-9 {
+    left: 4%;
+}
+
+#uploadDataModal .modal-dialog {
+    width: 630px;
+}

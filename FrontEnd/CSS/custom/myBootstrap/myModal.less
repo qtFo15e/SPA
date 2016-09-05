@@ -1,0 +1,77 @@
+.fade {
+  opacity: 0;
+  transition: opacity 0.15s linear;
+}
+
+.fade.in {
+  opacity: 1;
+}
+
+.modal-open {
+  overflow: hidden;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index : 1050;
+  overflow-x: auto;
+  overflow-y: auto;
+
+  &.fade .modal-dialog{
+    transform: translate( 0, -25% );
+    transition: transform .3s ease-out;
+  }
+  &.in .modal-dialog {
+    transform: translate( 0,0 );
+  }
+}
+
+.modal-dialog {
+  margin: 30px auto;
+
+
+}
+
+
+.modal-content {
+  position: relative;
+  top: 50px;
+
+  margin: 0 auto;
+  background-color: #fff;
+  //防止也边框的颜色叠加
+  background-clip: padding-box;
+
+  box-shadow: 0 0  10px #ccc;
+
+  .modal-header {
+    padding: 15px;
+    border-bottom:  1px solid #e5e5e5;
+  }
+
+  .modal-body {
+    overflow: auto;
+
+    padding: 15px 0;
+  }
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1040;
+
+  background-color: rgb( 0,0,0 );
+}
+
+.modal-backdrop.in {
+  opacity: .5 !important;
+}

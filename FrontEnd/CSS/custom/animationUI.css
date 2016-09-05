@@ -1,0 +1,872 @@
+/*动画样式*/
+
+#animationUI {
+    min-height: 650px;
+}
+
+#animationUI {
+    position: relative;
+    /*与图片等高*/
+    /*height: 628px;*/
+    height: calc( 100vh - 75px );
+    background-color: #8ab7a0;
+}
+
+#animationUI > .row {
+    position: relative;
+}
+
+#animationUI > .row:first-of-type {
+    height: 25%
+}
+
+#animationUI > .row:nth-of-type(2),#animationUI > .row:nth-of-type(3) {
+    height: 7%
+}
+
+#animationUI > .row:nth-of-type(3){
+    margin-top:10px
+}
+
+/*#animationUI > .row:last-of-type  ???不好使, 待整理笔记*/
+#animationUI > .row:nth-of-type(4) {
+    height: 50%
+}
+
+.ship {
+    position: absolute;
+    left: 70%;
+    top: 50%;
+    transform: translate( -50%, -50% );
+
+    font-size: 25px;
+}
+
+.ship-wrap {
+
+    /*待研究???*/
+    /*position: absolute;*/
+    /*left: 50%;*/
+    /*top: 50%;*/
+    /*width: 192px;*/
+    /*height: 122px;*/
+    /*transform: translate( -50%, -50% );*/
+
+    /*font-size: 32px;*/
+
+    padding: 0 50px ;
+    overflow: hidden;
+
+}
+
+.ship-inner {
+    position: relative;
+    bottom: -5px;
+    animation: up-down 0.5s  linear infinite alternate;
+}
+
+@keyframes up-down {
+    /*注意移动的距离要小于（不等于）bottom的值 ，否则出现上抬现象*/
+    to {
+        transform: translateY( -4px );
+    }
+}
+
+.ship-bottom:before,
+.ship-bottom:after,
+.ship-middle .middle .bottom .inner:after,
+.ship-top .middle:after {
+    position: absolute;
+    content: "";
+}
+
+
+.ship-top {
+    position: relative;
+    bottom: -0.3em;
+}
+
+.ship-top .middle {
+    position: absolute;
+    left: 3em;
+    bottom: 0;
+    height: 2.5em;
+    border-left: 2px solid #2E2E2E;
+}
+
+
+.ship-top .middle:after {
+    top: -0.2em;
+    left: -0.15em;
+
+    width: 0.3em;
+    height: 0.2em;
+    border-radius: 3px;
+    background-color: #2E2E2E;
+}
+
+.ship-top .left {
+    height: 2.5em;
+    border-left: 2px solid #2E2E2E;
+    transform: skew( -50deg );
+    transform-origin: 0 100%;
+}
+
+.ship-top .right {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+
+    height: 2.5em;
+    border-right: 2px solid #2E2E2E;
+    transform: skew( 49deg );
+    transform-origin: 0 100%;
+}
+
+.ship-middle {
+    position: relative;
+}
+
+.ship-middle .middle {
+    position: absolute;
+    left: 3.3em;
+    bottom: 0;
+}
+
+.ship-middle .middle .bottom {
+    width: 2em;
+    height: 0.8em;
+    background-color: #C1C1C1;
+    border: 2px solid #2B542C;
+
+}
+
+.ship-middle .middle  .top {
+    position: relative;
+    left: -0.25em;
+    bottom: -1px;
+
+    width: 2.5em;
+    height: 0.15em;
+    border-radius: 2px;
+    background-color: #2B542C;
+}
+
+.ship-middle .middle .bottom .inner {
+    width: 1em;
+    height: 0.4em;
+    border: 2px solid #2B542C;
+    border-left: none;
+    border-top: none;
+    transform-origin:  0 100% ;
+}
+
+.ship-middle .middle .bottom .inner:after {
+    left: 0.5em;
+    height: 0.4em;
+
+    border-left: 2px solid  #2B542C;
+}
+
+
+.ship-middle .left {
+    position: relative;
+    left: -1em;
+
+    height: 0.3em ;
+    width: 1.5em;
+    transform: skew( 45deg );
+    transform-origin: 100% 100%;
+
+    background-color: #1B6D85;
+}
+
+.ship-middle .right {
+    position: absolute;
+    /*tan30度 = 0.58*/
+    right: -0.58em;
+    bottom: 0;
+
+    height: 0.2em;
+    width: 1em;
+    transform: skew( -30deg );
+    transform-origin: 100% 100%;
+
+    background-color:  #1B6D85;
+}
+
+
+.ship-bottom {
+    position: relative;
+
+    width: 6em;
+    height: 1em;
+    background-color: #2E2E2E;
+}
+.ship-bottom:before {
+    width: 1em;
+    height: 1em;
+    /*斜边是后计算出来的*/
+    transform:  skew( 45deg );
+    transform-origin: 100% 100%;
+
+    background-color: #2E2E2E;
+}
+.ship-bottom:after {
+    right: 0;
+
+    width: 1em;
+    height: 1em;
+    transform: skew( -30deg );
+    transform-origin: 100% 100%;
+
+    background-color: #2E2E2E;
+}
+
+
+.ship .water{
+    /*bottom:0;*/
+    /*未查明改的原因???*/
+    bottom : -2px;
+    left:150px;
+    position:absolute;
+}
+.ship .water .drops{
+    width:300px;
+    height:22px;
+    position:relative;
+}
+.ship .water .drop{
+    left:0;
+    bottom:0;
+    background:#fff;
+    position:absolute;
+}
+.ship .water .drop:before,
+.ship .water .drop:after{
+    background:inherit;
+    border-radius:inherit;
+}
+.ship .water .drop.drop-a,
+.ship .water .drop.drop-b,
+.ship .water .drop.drop-e,
+.ship .water .drop.drop-f,
+.ship .water .drop.drop-g{
+    height:5px;
+    border-radius:3px 3px 0 0;
+}
+.ship .water .drop.drop-a{
+    width:10px;
+}
+.ship .water .drop.drop-b,
+.ship .water .drop.drop-e,
+.ship .water .drop.drop-f,
+.ship .water .drop.drop-g{
+    left:15px;
+    width:22px;
+}
+.ship .water .drop.drop-c{
+    left:37px;
+    width:32px;
+    height:7px;
+    border-radius:6px 6px 0 0;
+}
+.ship .water .drop.drop-c:before,
+.ship .water .drop.drop-c:after,
+.ship .water .drop.drop-d:before,
+.ship .water .drop.drop-d:after,
+.ship .water .drop.drop-g:before{
+    width:2px;
+    height:2px;
+    border-radius:50%;
+}
+.ship .water .drop.drop-c:before{
+    left:0;
+    top:-5px;
+}
+.ship .water .drop.drop-c:after{
+    top:-8px;
+    right:5px;
+    width:4px;
+    height:4px;
+}
+.ship .water .drop.drop-d{
+    left:68px;
+    width:25px;
+    height:10px;
+    border-radius:10px 10px 0 0;
+}
+.ship .water .drop.drop-d:before{
+    top:-8px;
+    left:8px;
+}
+.ship .water .drop.drop-d:after{
+    top:-2px;
+    right:-8px;
+}
+
+.ship .water .drop.drop-e{
+    left:93px;
+}
+.ship .water .drop.drop-f{
+    width:50px;
+    left:115px;
+    height:4px;
+}
+.ship .water .drop.drop-g{
+    left:auto;
+    right:75px;
+    width:40px;
+    height:2.5px;
+}
+.ship .water .drop.drop-g:before{
+    top:-5px;
+    left:-5px;
+}
+.ship .water .drop.drop-g:after{
+    left:100%;
+    width:12px;
+    height:inherit;
+}
+.ship .water .drop.drop-h{
+    left:auto;
+    right:25px;
+    height:2px;
+    width:25px;
+}
+.ship .water .drop.drop-h:before,
+.ship .water .drop.drop-h:after{
+    height:inherit;
+}
+.ship .water .drop.drop-h:before{
+    left:30px;
+    width:10px;
+}
+.ship .water .drop.drop-h:after{
+    left:45px;
+    width:4px;
+}
+
+.ship .water .drops-2{
+    bottom:0;
+    left:30px;
+    position:absolute;
+}
+.ship .water .drops-2 .drop.drop-a{
+    width:15px;
+    border-radius:5px 5px 0 0;
+}
+.ship .water .drops-2 .drop.drop-b{
+    height:10px;
+    border-radius:10px 10px 0 0;
+}
+.ship .water .drops-2 .drop.drop-c:before{
+    left:10px;
+    top:-10px;
+}
+.ship .water .drops-2 .drop.drop-c:after{
+    top:-12px;
+    right:-25px;
+}
+.ship .water .drops-2 .drop.drop-d{
+    height:8px;
+}
+.ship .water .drops-2 .drop.drop-d:before{
+    top:-15px;
+    left:35px;
+}
+.ship .water .drops-2 .drop.drop-d:after{
+    top:-8px;
+    right:-55px;
+}
+.ship .water .drops-2 .drop.drop-g:before{
+    right:0;
+    top:-10px;
+    left:auto;
+}
+.ship .water .drops-2 .drop.drop-h{
+    bottom:0;
+    width:10px;
+    left:auto;
+    height:5px;
+    right:45px;
+    border-radius:5px 5px 0 0;
+}
+.ship .water .drops-2 .drop.drop-h:before,
+.ship .water .drops-2 .drop.drop-h:after{
+    display:none;
+}
+
+.drops-1{
+    -webkit-animation:blink .8s linear infinite;
+    animation:blink .8s linear infinite;
+}
+.drops-2{
+    -webkit-animation:blink 1.6s linear infinite;
+    animation:blink 1.6s linear infinite;
+}
+
+@-webkit-keyframes boat-start{
+    0%{
+        -webkit-transform:none;
+        transform:none;
+    }
+    50%{
+        -webkit-transform:translateY(4px);
+        transform:translateY(4px);
+    }
+    100%{
+        -webkit-transform:none;
+        transform:none;
+    }
+}
+
+@keyframes blink{
+    25%{
+        visibility:hidden;
+    }
+    50%{
+        visibility:hidden;
+    }
+    100%{
+        visibility:visible;
+    }
+}
+
+
+
+
+.fish {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    padding: 0 50px;
+    /*transform: scale( 0.5 );*/
+    font-size: 32px;
+}
+
+
+.fish .fish-wrap {
+    position: absolute;
+    animation: fish-move 5s linear infinite ;
+}
+
+.fish-wrap1 {
+    /*隐藏等待动画时的样式*/
+    transform: scale( 0 );
+    animation: fish-move 5s linear infinite 2.5s !important;
+}
+
+/*旋转思路待整理？？？*/
+@keyframes fish-move {
+    from,
+    to {
+        left: 0;
+        transform: rotateY( 0deg ) scale( 0.5 );
+    }
+    1% {
+        transform: rotateY( 180deg ) scale( 0.5 );
+    }
+    49% {
+        transform: rotateY( 180deg ) scale( 0.5 );
+    }
+    50%{
+        left: 90%;
+        transform: rotateY( 0deg ) scale( 0.5 );
+    }
+}
+
+
+.fish .fish-templet{
+    width: 2em;
+    height: 2em;
+    background-color: tomato;
+    transform: rotate( -45deg );
+}
+
+
+.fish .fish-templet .eye {
+    position: absolute;
+    left: 0.4em;
+    top: 0.2em;
+    width: 0.25em;
+    height: 0.25em;
+    border-radius: 100%;
+    background-color: #fff;
+}
+
+
+/*没有套路，待看源码*/
+
+.fish .fish-templet .tails {
+    position: relative;
+    height: 0;
+    width: 0;
+    border: 0.8em transparent  solid;
+    border-right: 0.8em tomato solid ;
+    transform: rotate( 45deg )  translate( 1em );
+}
+
+.fish .fish-templet .tails:after {
+    content: "";
+    display: block;
+    position: absolute;
+
+
+
+    height: 0.8em;
+    width: 0.8em;
+    transform: translate( 20px,  -13px ) rotate( 45deg ) ;
+    background-color:  #8ab7a0;
+}
+
+
+.fish .fish-templet.fish-small {
+    position: relative;
+    top: -0.2em;
+    left: 1.8em;
+    transform:  rotate( -45deg ) scale( 0.5 );
+}
+
+
+
+
+.whale {
+    position: absolute;
+    overflow: hidden;
+    padding: 0 50px;
+    /*宽度问题未解决???未知滚动条*/
+    width: 100%;
+    height: 100%;
+    font-size: 20px;
+}
+
+.whale .body .body-top .eye:after,
+.whale .body .body-top .eye:before,
+.whale .body .body-top .mouth .teeth1:before,
+.whale .body .body-top .mouth .teeth1:after,
+.whale .body .body-top .mouth .teeth2:after,
+.whale .body .body-top .mouth .teeth3:before,
+.whale .body .body-top .mouth .teeth3:after,
+.whale .body .body-top .mouth .teeth4:after{
+    position: absolute;
+    content: "";
+}
+
+.whale .whale-wrap {
+    position: absolute;
+    bottom: 0;
+    height: 7em;
+    animation: move 10s linear infinite ;
+}
+
+@keyframes move {
+    0% {
+        left: -30%;
+    }
+
+    100% {
+        left: 110% ;
+    }
+}
+
+.whale .body {
+    position: relative;
+    width: 9em;
+    height: 4em;
+    animation: whale-up 10s linear infinite;
+
+    transform-origin: 50%  ;
+}
+
+@keyframes whale-up {
+    /* ？？？ 旋转 + 平移： 出现拖底平移的情况 ，猜测和origin有关 ， 改进方案是转动大圆周来实现相同效果（未测试）*/
+    0% {
+        transform: rotate( -15deg );
+    }
+
+    50% {
+        transform: rotate( 0deg ) translate( 0, -4em );
+    }
+
+    100% {
+        transform: rotate( 15deg );
+    }
+}
+
+.whale .body .body-top {
+    position: absolute;
+    left: 5em;
+    top: 0;
+    overflow: hidden;
+
+    width: 4em;
+    height: 3em;
+    background-color: #2B669A;
+    border-bottom-right-radius: 100% ;
+}
+
+.whale .body .body-bottom {
+
+    position: relative;
+
+    width: 5em;
+    height: 3em;
+    background-color: #2B669A;
+    border-bottom-left-radius: 100%;
+}
+
+
+
+.whale .body .body-top .mouth {
+    position: absolute;
+    top: 0.1em;
+    right: 0;
+    overflow: hidden;
+
+    width: 3em;
+    height: 1.8em;
+    transform: skew( -20deg );
+    background-color: #fff;
+    border-radius: 40%;
+}
+
+.whale .body .body-top .mouth .teeth1,
+.whale .body .body-top .mouth .teeth1:before,
+.whale .body .body-top .mouth .teeth1:after,
+.whale .body .body-top .mouth .teeth2,
+.whale .body .body-top .mouth .teeth2:after,
+.whale .body .body-top .mouth .teeth3,
+.whale .body .body-top .mouth .teeth3:before,
+.whale .body .body-top .mouth .teeth3:after,
+.whale .body .body-top .mouth .teeth4,
+.whale .body .body-top .mouth .teeth4:after{
+    border-left: 0.05em solid #2E2E2E;
+    width: 0;
+    height: 2em;
+}
+
+.whale .body .body-top .mouth .teeth1 {
+    position: absolute;
+    left: 1em;
+}
+
+.whale .body .body-top .mouth  .teeth1:before {
+    left: -0.5em;
+}
+
+.whale .body .body-top .mouth  .teeth1:after {
+    left: 0.5em;
+}
+
+.whale .body .body-top .mouth  .teeth2{
+    position: absolute;
+    left: 2em;
+}
+
+.whale .body .body-top .mouth .teeth2:after {
+    left: 0.5em;
+}
+.whale .body .body-top .mouth .teeth3 {
+    position: absolute;
+    left: 0.25em;
+}
+.whale .body .body-top .mouth  .teeth3:before {
+    left: 0.5em;
+}
+.whale .body .body-top .mouth  .teeth3:after {
+    left: 1em;
+}
+.whale .body .body-top .mouth .teeth4 {
+    position: absolute;
+    left: 1.75em;
+}
+.whale .body .body-top .mouth .teeth4:after {
+    left: 0.5em;
+}
+
+.whale .body .body-top .eye {
+    position: absolute;
+    top: 0.6em;
+    left: 0.4em;
+    width: 0.4em;
+    height: 0.4em;
+    border: 1px solid #2E2E2E;
+    background-color: #fff;
+    border-radius: 50%;
+}
+
+
+.whale .body .body-top .eye:before {
+    position: absolute;
+    top: -0.1em;
+    left: -0.2em;
+    transform: rotate( -35deg );
+    width: 0.3em;
+    height: 0.3em;
+    border-top: 0.07em solid #2E2E2E ;
+    border-radius: 50% / 50%;
+}
+
+.whale .body .body-top .eye:after {
+    position: absolute;
+    top: -0.2em;
+    left: -0.2em;
+    transform: skew( -30deg ) rotate( 20deg );
+    width: 1em;
+    height: 0.8em;
+    border-bottom: 0.07em solid #2E2E2E;
+    border-radius: 50% / 50%;
+
+}
+
+.whale .body .body-top .eye .pupil {
+    position: relative;
+    top: 0.15em;
+    left: 0.15em;
+    width: 0.1em;
+    height: 0.1em;
+    border-radius: 50%;
+    background-color: #2E2E2E;
+}
+
+
+.whale .body .body-bottom  .fin {
+    position: absolute;
+
+    bottom: -1.5em;
+    right: -1.5em;
+    transform: skew( -40deg );
+    border: 1em solid transparent;
+    border-top: 1em solid #14344C;
+    border-radius: 50%;
+}
+
+.whale .body .body-bottom  .left-fin {
+    position: absolute;
+    bottom: -1.5em;
+    right: 0;
+    transform: skew( -40deg );
+    border: 1em solid transparent;
+    border-top: 1em solid #14344C;
+    border-radius: 50%;
+}
+
+
+.whale .body .body-bottom .tail-fin {
+    position: absolute;
+    left: -0.9em;
+    top: -0.2em;
+
+    /* ？？？尾部不能转到， 会产生未知错误， 如兄弟元素缝隙 overflow 失效*/
+    /*animation: swing 1s alternate infinite;*/
+    /*transform-origin: 100% 0;*/
+}
+
+/*@keyframes swing {*/
+/*0%{*/
+/*transform: rotate( 30deg );*/
+/*}*/
+/*100% {*/
+/*transform: rotate( 60deg );*/
+/*}*/
+/*}*/
+
+.whale .body .body-bottom .tail-fin .top {
+    width: 1em;
+    height: 0.3em;
+    transform: rotate( 7deg );
+    transform-origin: 100% 100%;
+    border-radius: 50% 50% 0 0 / 100%;
+    background-color: #14344C;
+}
+
+.whale .body .body-bottom .tail-fin .bottom {
+    position: absolute;
+    right: 0;
+    width: 1.3em;
+    height: 0.5em;
+    transform: rotate( -8deg );
+    transform-origin: 100% 0;
+    border-radius: 0 0 50% 50%  / 100%;
+    background-color: #14344C;
+}
+
+
+.shadow {
+    position: absolute;
+    top: 5em;
+    left: 2.5em;
+
+    width: 6em;
+    height: 1.5em;
+    border-radius: 50%;
+    background-color: rgba( 0,0,0,0.25 );
+
+    animation: shadow 10s linear infinite;
+}
+
+@keyframes shadow {
+    50% {
+        transform: scale( 0.7 );
+    }
+}
+
+
+/* Bubbles */
+.bubbles {
+    position: absolute;
+    bottom: 0;
+    z-index: 5;
+    margin-right: 50px;
+    background-color: white;
+    border-radius: 50%;
+    opacity: .50;
+    width: 20px;
+    height: 20px;
+    animation: up 4s infinite;
+}
+
+.bubble-2 {
+    left: 350px;
+    animation: up 2s infinite;
+}
+
+.bubble-3 {
+    left: 750px;
+    opacity: .30;
+    animation: up 5s infinite;
+}
+
+.bubble-4 {
+    left: 1150px;
+    animation: up 6s infinite;
+}
+
+.bubble-5 {
+    left: 50px;
+    animation: up 5s infinite;
+}
+
+.bubble-6 {
+    left: 300px;
+    opacity: .30;
+    animation: up 3s infinite;
+}
+
+.bubble-7 {
+    left: 670px;
+    animation: up 4s infinite;
+}
+
+.bubble-8 {
+    left: 1050px;
+    opacity: .30;
+    animation: up 3s infinite;
+}
+
+@keyframes up {
+    100% {
+        transform: translateY( -800px )
+    }
+}

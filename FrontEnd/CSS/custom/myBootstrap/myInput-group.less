@@ -1,0 +1,75 @@
+@vertical-padding-sm: 5px ;
+@horizontal-padding-sm:10px;
+@font-size-sm:12px;
+@border-radius-sm:3px;
+@height-sm:30px;
+
+.size(@vertical-padding, @horizontal-padding, @font-size, @border-radius, @height) {
+  padding: @vertical-padding @horizontal-padding;
+  border-radius: @border-radius;
+  height: @height;
+
+  font-size: @font-size;
+}
+
+
+.input-group {
+  //使之具有table的特性
+  position: relative;
+  display: inline-table;
+  border-collapse: separate;
+
+  & .form-control, & .input-group-addon {
+    display : table-cell;
+
+    border  : 1px solid #CCCCCC;
+
+    &:first-child {
+      border-bottom-right-radius : 0;
+      border-top-right-radius    : 0;
+    }
+
+    &:last-child {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+
+  .form-control {
+    width: 100%;
+  }
+
+  .input-group-addon {
+    width: 1%;
+
+    background-clip: padding-box;
+    background-color : #EEEEEE;
+
+    white-space: nowrap;
+    vertical-align: middle;
+
+    &:first-child:not(:last-child) {
+      border-right: none;
+    }
+
+    &:last-child:not(:first-child) {
+      border-left: none;
+    }
+
+    &:not(:last-child):not(:first-child){
+      border-left  : none;
+      border-right : none;
+    }
+  }
+}
+
+
+.input-group-sm {
+  & > .form-control,& > .input-group-addon {
+    .size(@vertical-padding-sm, @horizontal-padding-sm,@font-size-sm, @border-radius-sm, @height-sm)
+  }
+}
+
+.form-inline .input-group .form-control {
+  width: auto;
+}

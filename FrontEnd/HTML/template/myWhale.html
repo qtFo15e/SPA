@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+    <style>
+
+        body {
+            background: lightcyan;
+        }
+
+        .fish {
+            width: 100px;
+            height: 100px;
+            top: 50%;
+            right: 50%;
+            background: tomato;
+            position: absolute;
+            animation: fly 10s linear infinite;
+            /*动画会重置transform的属性， 居中意义不大*/
+            transform: translateX( -50% );
+        }
+
+
+        span:nth-of-type(1) {
+            width: 10px;
+            height: 10px;
+            background-color: white;
+            border-radius: 50%;
+            z-index: 9;
+            display: inline-block;
+            position: absolute;
+            margin: 70px 0 0 7px;
+        }
+
+        span:nth-of-type(2) {
+            width: 50px;
+            height: 50px;
+            background: tomato;
+            position: absolute;
+            top: -25px;
+            left: 70px;
+        }
+
+        span:nth-of-type(3) {
+            width: 50px;
+            height: 50px;
+            background-color: lightcyan;
+            position: absolute;
+            top: -50px;
+            left: 95px;
+        }
+
+        @keyframes fly {
+            0%,
+            100% {
+                right: 10%;
+                /*45???*/
+                transform: rotateY( 180deg ) rotate( 45deg );
+                top: 150px;
+            }
+
+            1% {
+                transform: rotateY( 0deg ) rotate( 45deg );
+            }
+
+            25% {
+                top: 180px;
+            }
+
+            49% {
+                transform: rotateY( 0deg ) rotate( 45deg );
+            }
+            50% {
+                right: 90%;
+                top: 150px;
+                transform: rotateY( 180deg ) rotate( 45deg ) ;
+            }
+            75% {
+                top: 180px;
+            }
+        }
+
+        .shadow {
+            width: 100px;
+            height: 20px;
+            background: rgba( 0,0,0,.15 );
+            position: absolute;
+            top: 350px;
+            animation: fly2 10s infinite linear ;
+            border-radius: 50%;
+        }
+
+        @keyframes fly2 {
+            0%,
+            100% {
+                right: 10%;
+                transform: rotateY( 180deg );
+                width: 60px;
+                height: 10px;
+            }
+            1% {
+                transform: rotateY( 0deg );
+            }
+            25% {
+                width: 100px;
+                height: 20px;
+            }
+            49% {
+                transform: rotateY( 0deg );
+            }
+            50% {
+                right: 90%;
+                transform: rotateY( 180deg );
+                width: 60px;
+                height: 10px;
+            }
+            75% {
+                width: 100px;
+                height: 20px;
+            }
+        }
+    </style>
+    <script src="../../JavaScript/jQuery/jquery-2.1.4.js"></script>
+    <script>
+
+    </script>
+</head>
+<body>
+
+<div class="fish">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+
+<div class="shadow"> </div>
+</body>
+</html>

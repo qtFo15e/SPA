@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+    </style>
+    <link href="../../CSS/jQuery/nanoScroller.css" rel="stylesheet">
+    <link href="../../bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../CSS/jQuery/flat/blue.css" rel="stylesheet">
+    <link href="../../bootstrap/css/bootstrap-select.css" rel="stylesheet">
+
+    <link href="../../CSS/custom/common.css" rel="stylesheet">
+    <link href="../../CSS/custom/header.css" rel="stylesheet">
+    <link href="../../CSS/custom/footer.css" rel="stylesheet">
+
+    <link href="../../CSS/custom/loginIn.css" rel="stylesheet">
+    <link href="../../CSS/custom/signUp.css" rel="stylesheet">
+
+    <link href="../../CSS/custom/analyzeData.css" rel="stylesheet">
+    <link href="../../CSS/custom/realTimeData.css" rel="stylesheet">
+
+    <link href="../../CSS/custom/analyzeData.css" rel="stylesheet">
+
+
+    <script src="../../JavaScript/jQuery/jquery-2.1.4.js"></script>
+    <script src="../../bootstrap/js/bootstrap.js"></script>
+    <script src="../../JavaScript/jQuery/jquery.cookie.js"></script>
+    <script src="../../JavaScript/other/chart.js"></script>
+    <script src="../../JavaScript/other/underscore.js"></script>
+
+    <style>
+
+    </style>
+
+    <script>
+
+    </script>
+</head>
+<body>
+
+
+<div class="container" style="width: 1030px">
+    <div class="row">
+        <div class="col-xs-12">
+                <form>
+                    <table id="waterlevelTable" class="table table-striped" style="padding-top: 30px" >
+                        <thead>
+                            <tr>
+                                <th><input id="waterlevelALLCheckbox" type="checkbox" ></th>
+                                <th>#</th>
+                                <th>标准</th>
+                                <th>pH</th>
+                                <th>溶解氧</th>
+                                <th>氨氮</th>
+                                <th>高锰酸钾指数</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-index="0">
+                                <td><input class="warterlevelCheckbox" type="checkbox" data-waterlevel="waterlevel1"></td>
+                                <th>1</th>
+                                <td>I类</td>
+                                <td data-type="ph">6-9</td>
+                                <td data-type="dissolvedOxygen">≥7.5</td>
+                                <td data-type="ammoniaNitrogen">≤0.15</td>
+                                <td data-type="mineralChameleon">≤2</td>
+                            </tr>
+                            <tr data-index="1">
+                                <td><input type="checkbox" ></td>
+                                <th>2</th>
+                                <td>II类</td>
+                                <td>6-9</td>
+                                <td>≥6</td>
+                                <td>≤0.5</td>
+                                <td>≤4</td>
+                            </tr>
+                            <tr data-index="2">
+                                <td><input type="checkbox" disabled></td>
+                                <th>3</th>
+                                <td>III类</td>
+                                <td data-index="0">6-9</td>
+                                <td data-index="1">≥5</td>
+                                <td data-index="2">≤1</td>
+                                <td data-index="3">≤6</td>
+                            </tr>
+                            <tr data-index="3">
+                                <td><input type="checkbox"></td>
+                                <th>4</th>
+                                <td>
+                                    <div class="input-group input-group-sm">
+                                        <input class="form-control borderFix" type="text" name="name" required placeholder="少于15个字符">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="input-group input-group-sm">
+                                        <input class="form-control" type="" name="min" required placeholder=">0" min="0">
+                                        <span class="input-group-addon">-</span>
+                                        <input class="form-control" type="number" name="max" required placeholder=">0" min="0" >
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="input-group input-group-sm" >
+                                        <span class="input-group-addon">≥</span>
+                                        <input autofocus class="form-control" type="number" name="dissolvedOxygen" required placeholder="大于0的数字" >
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="input-group input-group-sm">
+                                        <span class="input-group-addon">≤</span>
+                                        <input autofocus class="form-control" type="number" name="ammoniaNitrogen" required placeholder="大于0的数字" >
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="input-group input-group-sm" >
+                                        <span class="input-group-addon">≤</span>
+                                        <input autofocus class="form-control" type="number" name="mineralChameleon" placeholder="大于0的数字" step="0.01">
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="btn-group">
+
+                        <div class="btn-group">
+                            <label for="orderedItem" class="none">排序项目</label>
+                            <select id="orderedItem" class="form-control" style=";border-bottom-right-radius: 0;border-top-right-radius: 0" >
+                                <option value="dissolvedOxygen">溶解氧</option>
+                                <option value="ammoniaNitrogen">氨氮</option>
+                                <option value="mineralChameleon">高锰酸钾指数</option>
+                            </select>
+                        </div>
+                        <button id="ascend"   type="button"  class="btn btn-default">升序</button>
+                        <button id="descend"  type="button" class="btn btn-default">降序</button>
+                        <button id="default"  type="button" class="btn btn-default">默认</button>
+
+                    </div>
+                    <div class="btn-group pull-right">
+                        <button id="deleteStandard" type="button" class="btn btn-default">删除</button>
+                        <button id="resetStandard" type="button" class="btn btn-default">清空</button>
+                        <button id="continueAdd" type="button" class="btn btn-default">添加</button>
+                        <button id="add" type="submit" class="btn btn-default" >提交</button>
+                    </div>
+                </form>
+        </div>
+    </div>
+
+
+</div>
+
+</body>
+</html>

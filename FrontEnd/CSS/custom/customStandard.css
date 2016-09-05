@@ -1,0 +1,41 @@
+#waterlevelTable {
+    padding-top: 30px
+}
+#customWaterlevelContainner > div > div > div.modal-body > div {
+    width: 1060px
+}
+
+#waterlevelTable input:not( input[type='checkbox'] ){
+    width: 180px;
+}
+
+#waterlevelTable th, #waterlevelTable td {
+    /*待解决*/
+    /*在modal内， 原有样式失控*/
+    /*display: inline-block;*/
+    width: 180px;
+    padding-right: 30px;
+}
+
+#waterlevelTable tr th:nth-of-type( 1 ), #waterlevelTable tr th:nth-of-type( 2 ) {
+    width: 50px;
+}
+
+#waterlevelTable tbody th, #waterlevelTable tbody td:nth-of-type(1) {
+    width: 50px;
+}
+
+#waterlevelTable .borderFix {
+    border-radius: 4px !important;
+}
+
+#waterlevelTable tbody td span:hover {
+    cursor: pointer;
+}
+
+#customWaterlevelContainner .modal-dialog {
+    width: 1100px;
+}
+#orderedItem {
+    border-bottom-right-radius: 0;border-top-right-radius: 0;
+}

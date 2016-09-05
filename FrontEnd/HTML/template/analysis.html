@@ -1,0 +1,229 @@
+<div class="wrap">
+    <aside>
+        <div class="allHeight" id="asideFormwraper" >
+            <ul class="nav nav-tabs " style=" margin-left: -15px;width: 360px" >
+                <li ><a href="#">实时数据</a></li>
+                <li class="active"><a href="#">水质分析</a></li>
+            </ul>
+            <form class="asideForm form-horizontal">
+                <div class="asideLeft asideFormSection nano"  >
+                    <div class="nano-content imitateCol">
+
+                        <fieldset>
+                            <legend>监测项</legend>
+                            <div class="form-group form-group-sm" >
+
+                                <div class="col-xs-6">
+                                    <button id="showdetectedItem" type="button" class="form-control ">监测项目</button>
+                                </div>
+
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <legend>地点</legend>
+                            <div class="form-group form-group-sm">
+                                <div class="col-xs-6">
+                                    <button id="showwatershed" class="form-control" type="button">流域</button>
+                                </div>
+                                <div class="col-xs-6">
+                                    <button id="showdetectedStation" class="form-control secondButtonFIX" type="button" >监测站</button>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <legend>时间</legend>
+                            <div class="form-group form-group-sm">
+                                <label for="startTime" class="control-label col-xs-5 startTimeLableFix" >起始时间</label>
+                                <input id="startTime" class="form-control timeInputFix" name="startTime" type="date"  required>
+                            </div>
+                            <div class="form-group form-group-sm endTimeGroupFix" >
+                                <label for="endTime" class="control-label col-xs-5 startTimeLableFix">终止时间</label>
+                                <input id="endTime" class="form-control endTimeInputFix timeInputFix" name="endTime" type="date" required >
+                            </div>
+                            <!--<div  class="form-group form-group-sm">-->
+                            <!--<label for="cycle" class="control-label col-xs-5">取样周期</label>-->
+                            <!--<div class="col-xs-6">-->
+                            <!--<div class="input-group cycleInputFix timeInputGroupFix" >-->
+                            <!--<input   id="cycle" class="form-control "  name="cycle" type="number" min="1" required placeholder="不小于1" >-->
+                            <!--<span class="input-group-addon timeUnitFix" >天</span>-->
+                            <!--</div>-->
+                            <!--</div>-->
+                            <!--</div>-->
+                        </fieldset>
+                        <fieldset>
+                            <legend></legend>
+                            <div class="form-group form-group-sm">
+                                <div class="col-xs-6">
+                                    <button id="resetData" class="form-control" type="reset">重置数据</button>
+                                </div>
+                                <div class="col-xs-6">
+                                    <button id="loadData" class="form-control secondButtonFIX" type="submit">载入数据</button>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                    </div>
+                </div>
+                <div class="asideRight asideFormSection nano">
+                    <div class="nano-content">
+                        <table id="rightListTable" class="table table-hover" >
+
+                        </table>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </aside>
+
+    <main class="pageMain">
+        <div class="allHeight " >
+            <div class="container-fluid" style="margin-top: 10px">
+                <div class="row">
+                    <div class="col-xs-1">
+                        <div class="row">
+                            <a href="#"><img src="../../image/threeView.png" class="img-responsive"></a>
+                        </div>
+
+                    </div>
+
+                    <div class="col-xs-11" id="topFormWrapper" style="padding-left: 30px">
+                        <form id="topForm" class="form-inline">
+                            <div class="row">
+                                <div class="col-xs-11">
+                                    <div class="row">
+                                        <div class="form-group form-group-sm">
+                                            <label for="viewInput" class="control-label" style="margin-right: 5px">视角</label>
+                                            <select id="viewInput" class="form-control" name="viewAngle">
+                                                <option value="left">左视</option>
+                                                <option value="front">正视</option>
+                                                <option value="overlook">俯视</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group form-group-sm" >
+                                            <label for="pattern" class="control-label" style="margin-right: 5px">形式</label>
+                                            <select id="pattern" name="pattern" class="form-control">
+                                                <option value="chart">图形</option>
+                                                <option value="table">表格</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group form-group-sm" id="multipeSelect">
+                                            <label  for="waterStandard" class="control-label"  style="margin-right: 5px" >水质标准</label>
+                                            <select  id="waterStandard" class="form-control selectpicker " data-width="150px"   title="单/多选" data-selected-text-format="values"    data-actions-box="true" multiple >
+                                                <option data-tokens="waterlevel1" title="I类" >I类标准</option>
+                                                <option data-tokens="waterlevel2" title="II类" >II类标准</option>
+                                                <option data-tokens="waterlevel3" title="III类" >III类标准</option>
+                                            </select>
+                                        </div>
+                                        <div  class="form-group form-group-sm">
+                                            <label for="cycle" class="control-label">子视图周期</label>
+                                            <div class="input-group " >
+                                                <input   id="cycle" class="form-control "  name="cycle" type="number" min="2" required placeholder="不小于1" >
+                                                <span class="input-group-addon timeUnitFix" >天</span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <div class="col-xs-1">
+                                    <button id="abc">dad</button>
+                                    <div class="btn-group btn-group-sm" style="margin-bottom: 7px">
+                                        <button class="btn btn-default" type="reset" id="resetSelction" >重置</button>
+                                    </div>
+                                    <div class="btn-group btn-group-sm">
+                                        <button class="btn btn-default" type="submit" id="startAnalyse">分析</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="form-group form-group-sm">
+                                        <button id="ascend"  type="button" class="form-control">升序</button>
+                                    </div>
+                                    <div class="form-group form-group-sm">
+                                        <button id="descend"  type="button" class="form-control">升序</button>
+                                    </div>
+                                    <div class="form-group form-group-sm">
+                                        <button id="disorder"  type="button" class="form-control">升序</button>
+                                    </div>
+                                    <div class="form-group form-group-sm">
+                                        <button id="danger"  type="button" class="form-control">过量</button>
+                                    </div>
+                                    <div class="form-group form-group-sm">
+                                        <button id="access"  type="button" class="form-control">接近</button>
+                                    </div>
+                                    <div class="form-group form-group-sm">
+                                        <button id="normal"  type="button" class="form-control">正常</button>
+                                    </div>
+                                    <div class="form-group form-group-sm">
+                                        <button id="default"  type="button" class="form-control">默认</button>
+                                    </div>
+                                    <div class="form-group form-group-sm">
+                                        <button id="revoke"  type="button" class="form-control">撤销</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mainContent">
+            <div class="nano">
+                <div class="nano-content" id="contentContainer">
+
+
+
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <%_.each( data.allUIData.theadList, function ( item ) {%>
+                                            <th><%-item.name%><%-item.unit%></th>
+                                            <%} )%>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <%_.each( data.allUIData.tbodyList, function ( trData ) {%>
+                                        <tr>
+                                            <%_.each( trData, function ( tdData, index ) {
+                                            if ( index === 0 ) {%>
+                                            <th scope="row" ><%-tdData%></th>
+                                            <%} else {%>
+                                            <td><%-tdData%></td>
+                                            <%}
+                                            } )%>
+                                        </tr>
+                                        <%} )%>
+
+                                    </tbody>
+                                    <tfoot>
+
+                                        <%_.each( data.allUIData.tfootList ,function ( trData ) {%>
+                                        <tr>
+                                            <%_.each( trData, function ( tdData, index ) {
+                                            if ( index === 0 ) {%>
+                                            <th scope="row" ><%-tdData%></th>
+                                            <%} else {%>
+                                            <td><%-tdData.relation%><%-tdData.value%></td>
+                                            <%}
+                                            } )%>
+                                        </tr>
+                                        <%} )%>
+
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+</div>

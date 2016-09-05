@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link href="../../CSS/jQuery/nanoScroller.css" rel="stylesheet">
+    <link href="../../bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../CSS/jQuery/flat/blue.css" rel="stylesheet">
+    <link href="../../bootstrap/css/bootstrap-select.css" rel="stylesheet">
+
+    <link href="../../CSS/custom/common.css" rel="stylesheet">
+
+    <link href="../../CSS/custom/header.css" rel="stylesheet">
+    <link href="../../CSS/custom/footer.css" rel="stylesheet">
+    <link href="../../CSS/custom/customStandard.css" rel="stylesheet">
+
+    <link href="../../CSS/custom/loginIn.css" rel="stylesheet">
+    <link href="../../CSS/custom/signUp.css" rel="stylesheet">
+
+    <link href="../../CSS/custom/analyzeData.css" rel="stylesheet">
+    <link href="../../CSS/custom/realTimeData.css" rel="stylesheet">
+
+    <style>
+        body {
+            background:lightcyan;
+        }
+        .fish {
+            width:100px;
+            height:100px;
+            top:50%;
+            right:50%;
+            background:tomato;
+            position:absolute;
+            animation:  fly 10s infinite linear;
+            /*transform:;*/
+        }
+        .shadow {
+            width:100px;
+            height:20px;
+            background:rgba(0,0,0,.15);
+            position:absolute;
+            top:350px;
+            animation:10s fly2 infinite linear;
+            border-radius:50%;
+        }
+        span:nth-of-type(1) {
+            width:10px;
+            height:10px;
+            background:white;
+            border-radius:50%;
+            z-index:9;
+            display:inline-block;
+            position:absolute;
+            margin:70px 0 0 7px;
+        }
+        span:nth-of-type(2) {
+            width:50px;
+            height:50px;
+            background:tomato;
+            position:absolute;
+            top:-25px;
+            left:70px;
+        }
+        span:nth-of-type(3) {
+            width:50px;
+            height:50px;
+            background:lightcyan;
+            position:absolute;
+            top:-50px;
+            left:95px;
+        }
+        /* Fish fly */
+        @keyframes fly {
+            0%,
+            100% {
+                right:10%;
+                transform:rotateY(180deg) ;
+                top:150px ;
+            }
+            1% {
+                transform:rotateY(0deg) rotate( 45deg );
+            }
+            25% {
+                top:180px ;
+            }
+            /*控制变换节点*/
+            49% {
+                transform:rotateY(0deg) rotate( 45deg );
+            }
+            50% {
+                right:90%;
+                top:150px;
+                transform:rotateY(180deg) ;
+            }
+            75% {
+                top:180px;
+            }
+        }
+
+        /* Shadow fly */
+        @keyframes fly2 {
+            0%,
+            100% {
+                right:10%;
+                transform:rotateY(180deg);
+                width:60px;
+                height:10px;
+            }
+            1% {
+                transform:rotateY(0deg);
+            }
+            25% {
+                width:100px;
+                height:20px;
+            }
+            49% {
+                transform:rotateY(0deg);
+            }
+            50% {
+                right:90%;
+                transform:rotateY(180deg);
+                width:60px;
+                height:10px;
+            }
+            75% {
+                width:100px;
+                height:20px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="fish">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+
+<div class="shadow">
+</div>
+</body>
+</html>

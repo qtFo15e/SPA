@@ -1,0 +1,55 @@
+.nano .nano-pane   { background: #fffeea; }
+.nano .nano-slider { background: #c68E4F; }
+
+
+
+html ,body{
+    height:100%;
+    position: relative;
+}
+
+html {
+    /*min-height: 650px;*/
+}
+
+body {
+    min-width : 1240px;
+    overflow-y : hidden;
+    overflow-x : auto;
+}
+
+.allHeight {
+    height : 100%;
+}
+
+.none {
+    display: none;
+}
+
+
+
+
+.background {
+    background-image  : url(../../image/background.png);
+    background-repeat : repeat;
+    position          : relative;
+    /*box-sizing: border-box;*/
+    min-height        : 100%;
+    padding-bottom    : 45px;
+}
+
+.formContainer {
+    background-color : #CAD6FF;;
+    margin-left           : auto;
+    margin-right           : auto;
+    border           : 1px transparent solid;
+    padding          : 1px 15px 1px 15px;
+}
+
+.center {
+    text-align: center
+}
+
+.bold {
+    font-weight: bold
+}

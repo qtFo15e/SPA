@@ -1,0 +1,110 @@
+<div class="row ">
+    <div class="col-xs-8 col-xs-push-2">
+        <div id="signUpFormContainer" class="formContainer" >
+            <h2>注册账号</h2>
+            <form id="signUpForm" class="form-horizontal" noValidate>
+                <div class="form-group">
+                    <div class="col-xs-6">
+                        <div class="form-group form-group-lg has-feedback" >
+                            <label for="account" class="col-xs-3  control-label">账号</label>
+                            <div class="col-xs-9">
+                                <input id="account" class="form-control " type="email" name="account" autocomplete="off" placeholder="email@example.com"  tabindex="1" autofocus maxlength="30" required spellcheck="false">
+                                <span class="form-control-feedback glyphicon "></span>
+                            </div>
+
+                        </div>
+                        <div class="form-group form-group-lg has-feedback">
+                            <label class="col-xs-3  control-label" for="username">用户名</label>
+                            <div class=" col-xs-9">
+                                <input id="username" class="form-control"  type="text" name="username" tabindex="2" placeholder="2到10位非符号字符" required spellcheck="false" pattern="\w{2,10}" maxlength="10" autocomplete="off">
+                                <span class=" glyphicon form-control-feedback"></span>
+                            </div>
+
+                        </div>
+                        <div class="form-group form-group-lg has-feedback">
+                            <label class="col-xs-3  control-label" for="phoneNumber">联系电话</label>
+                            <div class=" col-xs-9">
+                                <input id="phoneNumber" class="form-control"  type="tel" name="phoneNumber" tabindex="3" placeholder="手机号" pattern="\d{11}" required maxlength="11" autocomplete="off">
+                                <span class=" glyphicon form-control-feedback"></span>
+                            </div>
+                        </div>
+                        <div class="form-group form-group-lg">
+                            <label class="col-xs-3 control-label" for="paperType">证件类型</label>
+                            <div class="col-xs-9">
+                                <select id="paperType" class="form-control " name="paperType" tabindex="4" >
+                                    <option value="IDCard">身份证</option>
+                                    <option value="starfCard">职工证</option>
+                                    <option value="teacherCard">教师证</option>
+                                    <option value="studentCard">学生证</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group form-group-lg has-feedback">
+                            <label class="col-xs-3  control-label" for="cardNumber">证件号码</label>
+                            <div class=" col-xs-9">
+                                <input id="cardNumber" class="form-control"  type="text" name="cardNumber" tabindex="5" placeholder="8到15位数字" required pattern="\d{8,15}" maxlength="15" autocomplete="off">
+                                <span class=" glyphicon form-control-feedback"></span>
+                            </div>
+                        </div>
+                        <div class="form-group form-group-lg">
+                            <div class="col-xs-10 col-xs-push-2">
+                                <p id="promptMassage" class="form-control-static text-danger"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+
+                        <div class="form-group form-group-lg has-feedback">
+                            <label class="col-xs-3  control-label" for="workPlace">所在单位</label>
+                            <div class=" col-xs-9">
+                                <input id="workPlace" class="form-control"  type="text" name="workPlace" tabindex="6" placeholder="不多于20个字符" pattern="\w{1,20}" required spellcheck="false" maxlength="20" autocomplete="off">
+                                <span class=" glyphicon form-control-feedback"></span>
+                            </div>
+                        </div>
+                        <div class="form-group form-group-lg has-feedback" >
+                            <label class="col-xs-3  control-label" for="remark">备注</label>
+                            <div class=" col-xs-9">
+                                <input id="remark" class="form-control " type="text" name="remark" tabindex="7" placeholder="可选" maxlength="50" spellcheck="false" autocomplete="off">
+                                <span class=" glyphicon form-control-feedback"></span>
+                            </div>
+                        </div>
+                        <div class="form-group form-group-lg has-feedback">
+                            <!--id命待修改-->
+                            <label class="col-xs-3  control-label" for="authorisation">邀请码</label>
+                            <div class=" col-xs-9">
+                                <input id="authorisation" class="form-control"  type="text" name="authorisation" tabindex="8" placeholder="10位数字" pattern="\d{10}" maxlength="10" required autocomplete="off">
+                                <span class=" glyphicon form-control-feedback "></span>
+                            </div>
+                        </div>
+                        <div class="form-group form-group-lg has-feedback ">
+                            <label for="password" class="control-label col-xs-3">密码</label>
+                            <div class="col-xs-9">
+                                <input id="password" class="form-control" type="password" name="password" tabindex="9" placeholder="6到15位字母或数字"  required pattern="[a-zA-Z0-9]{6,15}" maxlength="15" >
+                                <span class=" glyphicon form-control-feedback"></span>
+                            </div>
+                        </div>
+                        <div class="form-group form-group-lg has-feedback">
+                            <label for="passwordRepeat" class="control-label col-xs-3" >重复密码</label>
+                            <div class="col-xs-9">
+                                <input id="passwordRepeat" class="form-control" type="password" name="passwordRepeat" tabindex="10" placeholder="重复密码" maxlength="15" required pattern="[a-zA-Z0-9]{6,15}">
+                                <span class=" glyphicon form-control-feedback"></span>
+                            </div>
+                        </div>
+                        <div class="form-group form-group-lg ">
+                            <div class="col-xs-8 form-control-static center" >
+                                <span class="center">已有账号?</span>
+                                <a id="toLoginIn" href="#" tabindex="-1">马上登录</a>
+                            </div>
+
+                            <div class="col-xs-4 pull-right">
+                                <button class="form-control bold" type="submit"  tabindex="11" >注册</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+    

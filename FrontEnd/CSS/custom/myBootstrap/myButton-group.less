@@ -1,0 +1,58 @@
+//1.border-color : transparent的方案会导致 上下边框有间隙
+//2.border:none 的方案会导致 outline 显示效果不一致
+
+.btn-group {
+  display: inline-block;
+  position: relative;
+
+  vertical-align: middle;
+
+  .btn {
+    float: left;
+  }
+
+  .btn:hover, .btn:focus, .btn:active {
+    //解决outline被覆盖的问题
+    position: relative;
+    z-index: 2;
+
+    //按钮组不使用
+    outline: none;
+  }
+
+  //.dropdown-toggle 按钮单独使用，又有兄弟元素，所以需要排除  .dropdown-toggle 按钮
+  .btn:first-child:not(:last-child):not(.dropdown-toggle) {
+    //???? 编译结果  border-radius: 4px 0 0 1px; 待解决，猜测LESS把斜杠当做了计算
+    //border-radius: 4px 0 0 4px / 4px ;
+    border-radius: 0;
+    border-bottom-left-radius: 4px;
+    border-top-left-radius: 4px;
+  }
+
+  .btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
+    border-radius: 0;
+    margin-left: -1px;
+  }
+
+  .btn:last-child:not(:first-child):not(.dropdown-toggle) {
+    //??? 编译结果  border-radius: 0 4px 4px 0px;
+    //border-radius: 0 4px 4px 0 / 4px ;
+    border-radius: 0;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+
+    margin-left: -1px;
+  }
+}
+
+
+[data-toggle="buttons"] {
+    &.btn-group > .btn {
+      > input[type="checkbox"],
+      > input[type="radio"] {
+        position: absolute;
+        clip: rect(0,0,0,0);
+        pointer-events: none;
+      }
+    }
+}

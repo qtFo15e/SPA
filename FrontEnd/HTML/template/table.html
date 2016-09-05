@@ -1,0 +1,48 @@
+<script type="tmpl" id="table" class="tmpl">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <%_.each( data.allUIData.theadList, function ( item ) {%>
+                                <th><%-item.name%><%-item.unit%></th>
+                                <%} )%>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <%_.each( data.allUIData.tbodyList, function ( trData ) {%>
+                            <tr>
+                                <%_.each( trData, function ( tdData, index ) {
+                                if ( index === 0 ) {%>
+                                <th scope="row" ><%-tdData%></th>
+                                <%} else {%>
+                                <td><%-tdData%></td>
+                                <%}
+                                } )%>
+                            </tr>
+                            <%} )%>
+
+                        </tbody>
+                        <tfoot>
+
+                            <%_.each( data.allUIData.tfootList ,function ( trData ) {%>
+                            <tr>
+                                <%_.each( trData, function ( tdData, index ) {
+                                if ( index === 0 ) {%>
+                                <th scope="row" ><%-tdData%></th>
+                                <%} else {%>
+                                <td><%-tdData.relation%><%-tdData.value%></td>
+                                <%}
+                                } )%>
+                            </tr>
+                            <%} )%>
+
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </script>

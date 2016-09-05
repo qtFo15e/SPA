@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../../CSS/jQuery/nanoScroller.css" rel="stylesheet">
+    <link href="../../bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../CSS/jQuery/flat/blue.css" rel="stylesheet">
+    <link href="../../bootstrap/css/bootstrap-select.css" rel="stylesheet">
+
+    <link href="../../CSS/custom/common.css" rel="stylesheet">
+
+    <link href="../../CSS/custom/header.css" rel="stylesheet">
+    <link href="../../CSS/custom/footer.css" rel="stylesheet">
+    <link href="../../CSS/custom/customStandard.css" rel="stylesheet">
+
+    <link href="../../CSS/custom/loginIn.css" rel="stylesheet">
+    <link href="../../CSS/custom/signUp.css" rel="stylesheet">
+
+    <link href="../../CSS/custom/analyzeData.css" rel="stylesheet">
+    <link href="../../CSS/custom/realTimeData.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #8ab7a0;
+        }
+
+
+        .fish {
+            position: absolute;
+            width: 100%;
+            top: 50%;
+            padding: 0 50px;
+
+            font-size: 32px;
+        }
+
+
+        .fish .warp {
+            position: absolute;
+            animation: fish-move 5s linear infinite;
+        }
+
+
+        /*旋转思路待整理？？？*/
+        @keyframes fish-move {
+           from,
+           to {
+               left: 10%;
+               transform: rotateY( 0deg );
+           }
+           1% {
+               transform: rotateY( 180deg );
+           }
+           49% {
+               transform: rotateY( 180deg );
+           }
+           50%{
+               left: 90%;
+               transform: rotateY( 0deg );
+           }
+        }
+
+
+        .fish .fish-templet{
+            width: 2em;
+            height: 2em;
+            background-color: tomato;
+            transform: rotate( -45deg );
+        }
+
+
+        .fish .fish-templet .eye {
+            position: absolute;
+            left: 0.4em;
+            top: 0.2em;
+            width: 0.25em;
+            height: 0.25em;
+            border-radius: 100%;
+            background-color: #fff;
+        }
+
+
+        /*没有套路，待看源码*/
+
+        .fish .fish-templet .tails {
+            position: relative;
+            height: 0;
+            width: 0;
+            border: 0.8em transparent  solid;
+            border-right: 0.8em tomato solid ;
+            transform: rotate( 45deg )  translate( 1em );
+        }
+
+        .fish .fish-templet .tails:after {
+            content: "";
+            display: block;
+            position: absolute;
+
+
+
+            height: 0.8em;
+            width: 0.8em;
+            transform: translate( 20px,  -13px ) rotate( 45deg ) ;
+            background-color:  #8ab7a0;
+        }
+
+
+        .fish .fish-templet.fish-small {
+            position: relative;
+            top: -0.2em;
+            left: 1.8em;
+            transform:  rotate( -45deg ) scale( 0.5 );
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <div class="fish">
+        <div class="warp">
+            <div class="fish-templet">
+                <div class="eye">
+                </div>
+                <div class="tails">
+                </div>
+            </div>
+            <div class="fish-templet fish-small">
+                <div class="eye">
+                    <div class="pupil"></div>
+                </div>
+                <div class="tails">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

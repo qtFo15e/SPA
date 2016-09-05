@@ -1,0 +1,49 @@
+#loginInAndSignUpPage {
+    position: absolute;
+    top: 0;
+
+    width: 100%;
+}
+
+#loginInFormContainer {
+    border-radius : 10px 55px;
+    width         : 450px;
+    margin-top: 70px;
+}
+
+#promptMassage {
+    padding-left: 30px;
+}
+
+#loginInForm > div:nth-child(5) > div:nth-child(2) > div > div:nth-child(1) > div {
+    padding-top: 20px;
+}
+
+#loginInForm > div:nth-child(1) {
+    margin-bottom: 10px
+}
+
+#loginInForm > div:nth-child(5) {
+    margin-bottom: 0
+}
+
+#loginInForm > div:nth-child(5) > div:nth-child(2) > div > div:nth-child(1) {
+    margin-top:20px
+}
+
+
+/*signUp*/
+
+#formContainer h2 {
+    padding-left : 15px
+}
+
+#signUpFormContainer {
+    border-radius    : 10px 75px;
+    margin-top: 60px;
+    width            : 830px
+}
+
+#signUpForm > div > div:nth-child(2) > div:nth-child(6) > div.col-xs-8.form-control-static.center > span {
+    margin-right: 10px
+}

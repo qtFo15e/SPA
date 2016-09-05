@@ -1,0 +1,57 @@
+.table {
+  width: 100%;
+
+  caption {
+    padding: 8px;
+
+    color: #8E8E8E;
+    text-align: left;
+  }
+
+  thead {
+    // 由于 border-collapse: collapse 属性，边框不会叠加， 所以增加宽度
+    border-bottom: 2px solid #DDD;
+  }
+
+  tbody, tfoot {
+    & > tr {
+      border-top: 1px solid #DDD;
+    }
+  }
+
+  th, td {
+    padding: 8px;
+
+    text-align: left;
+    vertical-align: top;
+  }
+}
+
+.table-hover {
+  tbody, tfoot {
+    tr:hover {
+      background-color: #EFEFEF !important;
+    }
+  }
+}
+
+.table-striped {
+  thead {
+    tr {
+      background-color: #E1EAF4;
+    }
+  }
+
+  tbody, tfoot {
+    tr:nth-of-type( 2n + 1 ) {
+      background-color: #FFFEEA;
+    }
+  }
+}
+
+
+#rightListTable {
+  tr {
+    background-color: #fff !important;
+  }
+}

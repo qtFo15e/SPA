@@ -1,0 +1,138 @@
+//0.布局方案：   pad + content + pad + pad + content + pad + pad + content + pad
+//1.按此方案直接嵌套，左右两侧padding会重复, 引入 row,削减pad, 解决嵌套问题
+//2.container 和 col 本质上是一样的 ， container 相当于创作出的root col
+
+
+//注意点
+//0.overflow 对 负margin没有效果
+
+
+* {
+  box-sizing: border-box;
+}
+
+.clearfix {
+
+}
+
+.clearfix:before {
+  content: "";
+  display: table;
+}
+
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+///////////////////////////////////
+
+@gutter : 30px;
+// 1 / 12 = 8.33333
+@padding-base: ( @gutter / 2 );
+@cols-number : 12;
+@width-base: percentage( ( 1 / @cols-number ) ) ;
+
+
+//mixin
+
+.container-base(){
+  margin: auto;
+  padding-left:  @padding-base;
+  padding-right:  @padding-base;
+}
+
+.generate-col ( @counter  ) when ( @counter > 0 ){
+  .col-xs-@{counter} {
+    float: left;
+    padding-left: @padding-base;
+    padding-right: @padding-base;
+    width: ( @counter * @width-base );
+    //防止没有高度时，元素不占据位置
+    min-height: 1px;
+  }
+
+  .generate-col( ( @counter - 1 ) );
+}
+
+.generate-col-push ( @counter ) when ( @counter > 0 ) {
+  .col-xs-push-@{counter} {
+    position: relative;
+    left: ( @counter * @width-base );
+  }
+
+  .generate-col-push( ( @counter - 1 ) );
+}
+
+.generate-col-pull ( @counter ) when ( @counter > 0 ) {
+  .col-xs-pull-@{counter} {
+    position: relative;
+    left: ( @counter * @width-base );
+  }
+
+  .generate-col-pull( ( @counter - 1 ) );
+}
+
+//??? 若使用高阶函数仍可优化代码
+.generate-column( @counter ) {
+  .generate-col ( @counter  );
+  .generate-col-push ( @counter );
+  .generate-col-pull ( @counter );
+}
+
+
+//end mixin
+
+
+
+.container-fluid {
+  .container-base()
+}
+
+.row {
+  margin-left: -15px;
+  margin-right: -15px;
+
+  &:extend( .clearfix  all);
+}
+
+
+
+
+
+.generate-column( @cols-number );
+
+
+
+//0.自实现栅格布局： content + pad + content + pad + content
+//思路：只在元素间隔的位置流出间隙， 左右两边不留， 支持嵌套
+
+//基本设计：
+//* {
+//  box-sizing: border-box;
+//}
+
+//.row {
+//  overflow: hidden;
+//}
+//.col {
+//  float: left;
+//  padding-right: 15px;
+//}
+//
+//.col-xs-4 {
+//  width: 33.3333%;
+//}
+//
+//.row .col:last-of-type {
+//  padding-right: 0;
+//}
+
+
+.pull-left {
+  float: left !important;
+}
+
+.pull-right {
+  float: right !important;
+}

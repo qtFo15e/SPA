@@ -1,0 +1,32 @@
+.logocur {
+    cursor: pointer;
+}
+.logo {
+    height: 40px;
+    width: auto;
+}
+.siteName {
+    margin-top: -5px;
+}
+.userStatu {
+    padding:  3px 0;
+}
+header {
+    height: 50px;
+    background-color: #FFFEEA;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+
+.switchPage {
+    padding: 4px 0
+}
+
+.userStatu > span {
+    display: inline-block;
+
+    margin-left: 15px;
+    width: 70px;
+
+    text-align: center;
+}

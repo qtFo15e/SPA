@@ -1,0 +1,35 @@
+.table {
+  width: 100%;
+}
+.table caption {
+  padding: 8px;
+  color: #8E8E8E;
+  text-align: left;
+}
+.table thead {
+  border-bottom: 2px solid #DDD;
+}
+.table tbody > tr,
+.table tfoot > tr {
+  border-top: 1px solid #DDD;
+}
+.table th,
+.table td {
+  padding: 8px;
+  text-align: left;
+  vertical-align: top;
+}
+.table-hover tbody tr:hover,
+.table-hover tfoot tr:hover {
+  background-color: #EFEFEF !important;
+}
+.table-striped thead tr {
+  background-color: #E1EAF4;
+}
+.table-striped tbody tr:nth-of-type( 2n + 1 ),
+.table-striped tfoot tr:nth-of-type( 2n + 1 ) {
+  background-color: #FFFEEA;
+}
+#rightListTable tr {
+  background-color: #fff !important;
+}

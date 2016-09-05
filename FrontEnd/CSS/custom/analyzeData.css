@@ -1,0 +1,235 @@
+body > .container-fluid:first-child {
+    position: relative
+}
+
+#analysisPage {
+    position: absolute;
+    top:50px;
+    bottom: 0;
+    width: 100%;
+    background: #FFFFFF;
+    z-index: 500;
+}
+
+.imitateCol {
+    padding : 0 15px;
+}
+
+.anglePicFix {
+    height : 110px;
+    width  : auto;
+
+}
+
+.startTimeLableFix {
+    padding-bottom : 8px
+}
+
+.timeInputFix {
+    width: 150px !important;
+    margin-left : 29px
+}
+
+.endTimeGroupFix {
+    margin-bottom : 20px
+}
+
+.endTimeInputFix {
+    width       : 150px;
+    margin-left : 29px
+}
+
+.cycleInputFix {
+    margin-left : -16px
+}
+
+.timeUnitFix {
+    padding : 0
+}
+
+.timeInputGroupFix {
+    width : 92px
+}
+
+.resetLegendFix {
+    margin-bottom : 20px
+}
+
+.chartTableSelect {
+    padding     : 7px;
+    margin-left : -22px
+}
+
+.siteName {
+    margin-top : -5px;
+}
+
+
+
+.pageMain {
+    height      : 100%;
+    margin-left : 360px;
+}
+
+.wrap {
+    position : absolute;
+    right    : 0;
+    left     : 0;
+    top      : 0;
+    bottom   : 0;
+    padding  : 0 15px;
+    /*width: 100%;*/
+}
+
+.asideFormSection {
+    float  : left;
+    height : 100%;
+
+}
+
+.asideLeft {
+    width        : 210px;
+    border-right : 1px solid rgb(192, 192, 192);
+
+}
+
+.asideRight {
+    width        : 150px;
+    border-right : solid 1px silver;
+}
+
+.asideForm {
+    width    : 360px;
+    position : absolute;
+    left     : 0;
+    top      : 10px;
+    bottom   : 0;
+}
+
+.asideForm .form-group{
+   margin-top: 15px;
+}
+
+.mainContent {
+    position : absolute;
+    left     : 360px;
+    right    : 0;
+    top      : 125px;
+    bottom   : 0;
+}
+
+
+
+.secondButtonFIX {
+    margin-left : -15px;
+}
+
+.anglePrompt {
+    white-space : pre-wrap;
+}
+
+/*与checkbook组合，待调整*/
+.tableLableFIX {
+    font-weight   : normal;
+    display       : block;
+    padding       : 7px;
+    margin-bottom : 0;
+}
+
+.tableTbodyTdFIX {
+    padding : 0 !important;
+}
+
+/*//????*/
+/*.table thead,tbody,tfoot tr  th,td {*/
+/*border-top: transparent !important;*/
+/*}*/
+
+form .table .td {
+    word-wrap : break-word
+}
+
+
+#topForm .form-group {
+    margin-right  : 15px;
+    margin-bottom : 15px;
+}
+
+.pageMain .allHeight .container-fluid {
+    margin-top: 10px
+}
+
+#topFormWrapper{
+    padding-left: 30px
+}
+
+#topForm label{
+    margin-right: 5px
+}
+
+/*？？？与上传重复的样式，待整合*/
+#startAnalyse {
+    /*按钮大小和渐变位置的关系， 待研究？？？*/
+    font-size: 1.1em;
+    padding: 0.5em 3em 0.5em 0.8em;
+    background:
+            linear-gradient( -45deg ,transparent 1.5em, #8ab7a0 0  ) bottom right,
+            linear-gradient( -135deg, transparent 1.5em, #8ab7a0 0 )  top right ;
+    background-size: 100% 50%;
+    background-repeat: no-repeat;
+    box-shadow: none;
+    border: none !important;
+    border-radius: 5px;
+
+    text-align: center;
+    vertical-align: middle;
+}
+
+#startAnalyse:focus {
+    background:
+            linear-gradient( -45deg ,transparent 1.5em, #8ab7a0 0  ) top right,
+            linear-gradient( -135deg, transparent 1.5em, #8ab7a0 0 ) bottom right;
+    background-size: 100% 50%;
+    background-repeat: no-repeat;
+}
+
+#startAnalyse:focus, #startAnalyse:active {
+    outline: 0;
+}
+
+#rightListTable label {
+    cursor: pointer;
+}
+#rightListTable thead tr td:last-child {
+    cursor: pointer;
+}
+
+ #rightListTable input[type="checkbox"]:before {
+    content: "\a0";
+    display: block;
+    width: 17px;
+    height: 17px;
+    background-color: rgb(255, 239, 166);
+    /*????  待深入研究  行高减小，行元素上升，会有文字上升的效果， 比vertical-algin：top更高*/
+    line-height: 0.65;
+    border-radius: 3px;
+}
+
+#rightListTable input:checked:before {
+    background-color: rgb(53, 135, 197);
+    content: "\2713";
+    text-indent: 3px;
+    font-size: 20px;
+}
+
+#contentContainer > div > div > div > table > thead > tr {
+    background-color:#E1EAF4
+}
+
+#loginInForm > div:nth-child(5) > div:nth-child(2) > div > div:nth-child(1) > label {
+    font-weight: normal
+}
+
+#uploadDataModal > div > div > div.modal-body {
+    height: 350px;
+}

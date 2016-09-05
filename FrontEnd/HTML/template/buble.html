@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+
+<style>
+    /* Bubbles */
+    .bubbles {
+        position: absolute;
+        bottom: 0;
+        z-index: 5;
+        margin-right: 50px;
+        background-color: white;
+        border-radius: 50%;
+        opacity: .50;
+        width: 40px;
+        height: 40px;
+        animation: up 4s infinite;
+    }
+
+    .bubble-2 {
+        left: 350px;
+        animation: up 2s infinite;
+    }
+
+    .bubble-3 {
+        left: 750px;
+        opacity: .30;
+        animation: up 5s infinite;
+    }
+
+    .bubble-4 {
+        left: 1150px;
+        animation: up 6s infinite;
+    }
+
+    .bubble-5 {
+        left: 50px;
+        animation: up 5s infinite;
+    }
+
+    .bubble-6 {
+        left: 300px;
+        opacity: .30;
+        animation: up 3s infinite;
+    }
+
+    .bubble-7 {
+        left: 670px;
+        animation: up 4s infinite;
+    }
+
+    .bubble-8 {
+        left: 1050px;
+        opacity: .30;
+        animation: up 3s infinite;
+    }
+
+    @keyframes up {
+        100% {
+            transform: translateY( -800px )
+        }
+    }
+</style>
+<body style="background-color: #00B7FF">
+
+
+
+<div class="bubbles bubble-1"></div>
+<div class="bubbles bubble-5"></div>
+<div class="bubbles bubble-2"></div>
+<div class="bubbles bubble-6"></div>
+<div class="bubbles bubble-3"></div>
+<div class="bubbles bubble-7"></div>
+<div class="bubbles bubble-4"></div>
+<div class="bubbles bubble-8"></div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../../CSS/jQuery/nanoScroller.css" rel="stylesheet">
+    <link href="../../bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../CSS/jQuery/flat/blue.css" rel="stylesheet">
+    <link href="../../bootstrap/css/bootstrap-select.css" rel="stylesheet">
+
+    <link href="../../CSS/custom/common.css" rel="stylesheet">
+
+    <link href="../../CSS/custom/header.css" rel="stylesheet">
+    <link href="../../CSS/custom/footer.css" rel="stylesheet">
+    <link href="../../CSS/custom/customStandard.css" rel="stylesheet">
+
+    <link href="../../CSS/custom/loginIn.css" rel="stylesheet">
+    <link href="../../CSS/custom/signUp.css" rel="stylesheet">
+
+    <link href="../../CSS/custom/analyzeData.css" rel="stylesheet">
+    <link href="../../CSS/custom/realTimeData.css" rel="stylesheet">
+    <style>
+
+        .ship {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate( -50%, -50% );
+
+            font-size: 32px;
+        }
+
+        .ship-wrap {
+
+            /*待研究???*/
+            /*position: absolute;*/
+            /*left: 50%;*/
+            /*top: 50%;*/
+            /*width: 192px;*/
+            /*height: 122px;*/
+            /*transform: translate( -50%, -50% );*/
+
+            /*font-size: 32px;*/
+
+            padding: 0 50px ;
+            overflow: hidden;
+
+        }
+
+        .ship-inner {
+            position: relative;
+            bottom: -5px;
+            animation: up-down 0.5s  linear infinite alternate;
+        }
+
+        @keyframes up-down {
+            /*注意移动的距离要小于（不等于）bottom的值 ，否则出现上抬现象*/
+            to {
+                transform: translateY( -4px );
+            }
+        }
+
+        .ship-bottom:before,
+        .ship-bottom:after,
+        .ship-middle .middle .bottom .inner:after,
+        .ship-top .middle:after {
+            position: absolute;
+            content: "";
+        }
+
+
+        .ship-top {
+           position: relative;
+           bottom: -0.3em;
+        }
+
+        .ship-top .middle {
+            position: absolute;
+            left: 3em;
+            bottom: 0;
+            height: 2.5em;
+            border-left: 2px solid #2E2E2E;
+        }
+
+
+        .ship-top .middle:after {
+            top: -0.2em;
+            left: -0.15em;
+
+            width: 0.3em;
+            height: 0.2em;
+            border-radius: 3px;
+            background-color: #2E2E2E;
+        }
+
+        .ship-top .left {
+            height: 2.5em;
+            border-left: 2px solid #2E2E2E;
+            transform: skew( -50deg );
+            transform-origin: 0 100%;
+        }
+
+        .ship-top .right {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+
+            height: 2.5em;
+            border-right: 2px solid #2E2E2E;
+            transform: skew( 49deg );
+            transform-origin: 0 100%;
+        }
+
+        .ship-middle {
+            position: relative;
+        }
+
+        .ship-middle .middle {
+            position: absolute;
+            left: 3.3em;
+            bottom: 0;
+        }
+
+        .ship-middle .middle .bottom {
+            width: 2em;
+            height: 0.8em;
+            background-color: #C1C1C1;
+            border: 2px solid #2B542C;
+
+        }
+
+        .ship-middle .middle  .top {
+            position: relative;
+            left: -0.25em;
+            bottom: -1px;
+
+            width: 2.5em;
+            height: 0.15em;
+            border-radius: 2px;
+            background-color: #2B542C;
+        }
+
+        .ship-middle .middle .bottom .inner {
+            width: 1em;
+            height: 0.4em;
+            border: 2px solid #2B542C;
+            border-left: none;
+            border-top: none;
+            transform-origin:  0 100% ;
+        }
+
+        .ship-middle .middle .bottom .inner:after {
+            left: 0.5em;
+            height: 0.4em;
+
+            border-left: 2px solid  #2B542C;
+        }
+
+
+        .ship-middle .left {
+            position: relative;
+            left: -1em;
+
+            height: 0.3em ;
+            width: 1.5em;
+            transform: skew( 45deg );
+            transform-origin: 100% 100%;
+
+            background-color: #1B6D85;
+        }
+
+        .ship-middle .right {
+            position: absolute;
+            /*tan30度 = 0.58*/
+            right: -0.58em;
+            bottom: 0;
+
+            height: 0.2em;
+            width: 1em;
+            transform: skew( -30deg );
+            transform-origin: 100% 100%;
+
+            background-color:  #1B6D85;
+        }
+
+
+        .ship-bottom {
+            position: relative;
+
+            width: 6em;
+            height: 1em;
+            background-color: #2E2E2E;
+        }
+        .ship-bottom:before {
+            width: 1em;
+            height: 1em;
+            /*斜边是后计算出来的*/
+            transform:  skew( 45deg );
+            transform-origin: 100% 100%;
+
+            background-color: #2E2E2E;
+        }
+        .ship-bottom:after {
+            right: 0;
+
+            width: 1em;
+            height: 1em;
+            transform: skew( -30deg );
+            transform-origin: 100% 100%;
+
+            background-color: #2E2E2E;
+        }
+
+
+
+
+
+        .ship .water{
+            /*bottom:0;*/
+            /*未查明改的原因???*/
+            bottom : -2px;
+            left:150px;
+            position:absolute;
+        }
+        .ship .water .drops{
+            width:300px;
+            height:22px;
+            position:relative;
+        }
+        .ship .water .drop{
+            left:0;
+            bottom:0;
+            background:#fff;
+            position:absolute;
+        }
+        .ship .water .drop:before,
+        .ship .water .drop:after{
+            background:inherit;
+            border-radius:inherit;
+        }
+        .ship .water .drop.drop-a,
+        .ship .water .drop.drop-b,
+        .ship .water .drop.drop-e,
+        .ship .water .drop.drop-f,
+        .ship .water .drop.drop-g{
+            height:5px;
+            border-radius:3px 3px 0 0;
+        }
+        .ship .water .drop.drop-a{
+            width:10px;
+        }
+        .ship .water .drop.drop-b,
+        .ship .water .drop.drop-e,
+        .ship .water .drop.drop-f,
+        .ship .water .drop.drop-g{
+            left:15px;
+            width:22px;
+        }
+        .ship .water .drop.drop-c{
+            left:37px;
+            width:32px;
+            height:7px;
+            border-radius:6px 6px 0 0;
+        }
+        .ship .water .drop.drop-c:before,
+        .ship .water .drop.drop-c:after,
+        .ship .water .drop.drop-d:before,
+        .ship .water .drop.drop-d:after,
+        .ship .water .drop.drop-g:before{
+            width:2px;
+            height:2px;
+            border-radius:50%;
+        }
+        .ship .water .drop.drop-c:before{
+            left:0;
+            top:-5px;
+        }
+        .ship .water .drop.drop-c:after{
+            top:-8px;
+            right:5px;
+            width:4px;
+            height:4px;
+        }
+        .ship .water .drop.drop-d{
+            left:68px;
+            width:25px;
+            height:10px;
+            border-radius:10px 10px 0 0;
+        }
+        .ship .water .drop.drop-d:before{
+            top:-8px;
+            left:8px;
+        }
+        .ship .water .drop.drop-d:after{
+            top:-2px;
+            right:-8px;
+        }
+
+        .ship .water .drop.drop-e{
+            left:93px;
+        }
+        .ship .water .drop.drop-f{
+            width:50px;
+            left:115px;
+            height:4px;
+        }
+        .ship .water .drop.drop-g{
+            left:auto;
+            right:75px;
+            width:40px;
+            height:2.5px;
+        }
+        .ship .water .drop.drop-g:before{
+            top:-5px;
+            left:-5px;
+        }
+        .ship .water .drop.drop-g:after{
+            left:100%;
+            width:12px;
+            height:inherit;
+        }
+        .ship .water .drop.drop-h{
+            left:auto;
+            right:25px;
+            height:2px;
+            width:25px;
+        }
+        .ship .water .drop.drop-h:before,
+        .ship .water .drop.drop-h:after{
+            height:inherit;
+        }
+        .ship .water .drop.drop-h:before{
+            left:30px;
+            width:10px;
+        }
+        .ship .water .drop.drop-h:after{
+            left:45px;
+            width:4px;
+        }
+
+        .ship .water .drops-2{
+            bottom:0;
+            left:30px;
+            position:absolute;
+        }
+        .ship .water .drops-2 .drop.drop-a{
+            width:15px;
+            border-radius:5px 5px 0 0;
+        }
+        .ship .water .drops-2 .drop.drop-b{
+            height:10px;
+            border-radius:10px 10px 0 0;
+        }
+        .ship .water .drops-2 .drop.drop-c:before{
+            left:10px;
+            top:-10px;
+        }
+        .ship .water .drops-2 .drop.drop-c:after{
+            top:-12px;
+            right:-25px;
+        }
+        .ship .water .drops-2 .drop.drop-d{
+            height:8px;
+        }
+        .ship .water .drops-2 .drop.drop-d:before{
+            top:-15px;
+            left:35px;
+        }
+        .ship .water .drops-2 .drop.drop-d:after{
+            top:-8px;
+            right:-55px;
+        }
+        .ship .water .drops-2 .drop.drop-g:before{
+            right:0;
+            top:-10px;
+            left:auto;
+        }
+        .ship .water .drops-2 .drop.drop-h{
+            bottom:0;
+            width:10px;
+            left:auto;
+            height:5px;
+            right:45px;
+            border-radius:5px 5px 0 0;
+        }
+        .ship .water .drops-2 .drop.drop-h:before,
+        .ship .water .drops-2 .drop.drop-h:after{
+            display:none;
+        }
+
+        .drops-1{
+            -webkit-animation:blink .8s linear infinite;
+            animation:blink .8s linear infinite;
+        }
+        .drops-2{
+            -webkit-animation:blink 1.6s linear infinite;
+            animation:blink 1.6s linear infinite;
+        }
+
+        @-webkit-keyframes boat-start{
+            0%{
+                -webkit-transform:none;
+                transform:none;
+            }
+            50%{
+                -webkit-transform:translateY(4px);
+                transform:translateY(4px);
+            }
+            100%{
+                -webkit-transform:none;
+                transform:none;
+            }
+        }
+        
+
+        @keyframes blink{
+            25%{
+                visibility:hidden;
+            }
+            50%{
+                visibility:hidden;
+            }
+            100%{
+                visibility:visible;
+            }
+        }
+
+    </style>
+</head>
+<body style="background-color: #8ab7a0">
+    <div class="ship">
+        <div class="ship-wrap">
+            <div class="ship-inner">
+                <div class="ship-top">
+                    <div class="left"></div>
+                    <div class="middle"></div>
+                    <div class="right"></div>
+                </div>
+                <div class="ship-middle">
+                    <div class="left"></div>
+                    <div class="middle">
+                        <div class="top"></div>
+                        <div class="bottom">
+                            <div class="inner"></div>
+                        </div>
+                    </div>
+                    <div class="right"></div>
+                </div>
+                <div class="ship-bottom">
+                </div>
+            </div>
+        </div>
+        <div class="water">
+            <div class="drops clearfix drops-1">
+                <span class="drop drop-a"></span>
+                <span class="drop drop-b"></span>
+                <span class="drop drop-c"></span>
+                <span class="drop drop-d"></span>
+                <span class="drop drop-e"></span>
+                <span class="drop drop-f"></span>
+                <span class="drop drop-g"></span>
+                <span class="drop drop-h"></span>
+            </div>
+            <div class="drops clearfix drops-2">
+                <span class="drop drop-a"></span>
+                <span class="drop drop-b"></span>
+                <span class="drop drop-c"></span>
+                <span class="drop drop-d"></span>
+                <span class="drop drop-e"></span>
+                <span class="drop drop-f"></span>
+                <span class="drop drop-g"></span>
+                <span class="drop drop-h"></span>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>

@@ -1,0 +1,176 @@
+//不符合单一依赖原则， 待改进
+@vertical-padding-sm: 5px ;
+@horizontal-padding-sm:10px;
+@font-size-sm:12px;
+@border-radius-sm:3px;
+@height-sm:30px;
+
+@vertical-padding-base: 6px ;
+@horizontal-padding-base: 12px;
+@font-size-base: 14px;
+@border-radius-base:4px;
+@height-base:34px;
+
+
+@vertical-padding-lg: 10px ;
+@horizontal-padding-lg:16px;
+@font-size-lg:18px;
+@border-radius-lg:6px;
+@height-lg:46px;
+
+.size(@vertical-padding, @horizontal-padding, @font-size, @border-radius, @height) {
+  padding: @vertical-padding @horizontal-padding;
+  border-radius: @border-radius;
+  height: @height;
+
+  font-size: @font-size;
+}
+
+form {
+
+  fieldset {
+    padding: 0;
+    margin: 0;
+    border: none;
+  }
+
+  legend {
+    display: block;
+
+    //??? 不明真相 ，明明为block , 宽度默为自适应， 猜测为浏览器默认样式
+    width: 100%;
+    padding: 0;
+    margin-bottom: 0;
+    border-bottom: 1px solid #e5e5e5;
+
+    font-size: 22px;
+    color: #555
+  }
+
+  .form-group {
+
+    margin-bottom: 15px;
+
+    .control-label, .form-control {
+      color: #555;
+    }
+
+    .form-control {
+      border: 1px solid #ccc;
+      background-color: #fff;
+      box-shadow: 0 1px 1px rgba( 0,0,0, .15 ) inset;
+
+      &:focus {
+        box-shadow: 0 1px 1px rgba( 0,0,0, .15 ) inset, 0 0 8px rgba(102, 175, 233, .6);
+      }
+    }
+
+    .control-label {
+      font-size: 14px;
+      font-weight: normal;
+      white-space: nowrap;
+    }
+
+    .form-control-feedback {
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      //和高度值一样
+      width: 46px;
+      z-index: 2;
+
+      text-align: center;
+    }
+  }
+
+  .form-control-feedback {
+    position: relative;
+  }
+
+  .form-control-static {
+    height: 46px;
+    padding: 11px 16px;
+
+    font-size: 18px;
+    line-height: 1.3333333;
+  }
+}
+
+//涉及js组件未看，待完善
+.form-group.has-error .form-control-feedback{
+  color: #a94442;
+}
+.form-group.has-success .form-control-feedback{
+  color: #3c763d ;
+}
+
+
+form {
+  .form-group {
+    display: block;
+
+    .form-control, .control-label {
+      display: block;
+    }
+  }
+}
+
+
+.form-inline {
+  .form-group  {
+    display: inline-block;
+
+    .form-control, .control-label {
+      width: auto;
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+}
+
+.form-horizontal {
+  .form-group {
+    display: block;
+    margin-left: -15px;
+    margin-right: -15px;
+
+    .form-control, .control-label {
+      display: block;
+    }
+
+    .form-control {
+      width: 100%;
+    }
+
+    .control-label {
+      font-size: 14px;
+      text-align: right;
+      //使垂直居中
+      padding-top: 14.333333px;
+    }
+  }
+}
+
+.form-group, .btn-group {
+  .form-control {
+    .size(@vertical-padding-base, @horizontal-padding-base,@font-size-base, @border-radius-base, @height-base)
+  }
+}
+
+.form-group-sm {
+  .form-control {
+    .size(@vertical-padding-sm, @horizontal-padding-sm,@font-size-sm, @border-radius-sm, @height-sm)
+  }
+}
+
+.form-group-lg {
+  .form-control {
+    .size(@vertical-padding-lg, @horizontal-padding-lg,@font-size-lg, @border-radius-lg, @height-lg)
+  }
+
+  .control-label {
+    font-size: 18px;
+  }
+}
+

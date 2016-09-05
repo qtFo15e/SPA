@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="水质">
+    <meta name="description" content=数据管理网站">
+    <title>水质管理系统</title>
+    <link rel="Shortcut Icon" href=../../image/icon.png>
+
+
+    <link href="../../CSS/jQuery/nanoScroller.css" rel="stylesheet">
+    <link href="../../bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../CSS/jQuery/flat/blue.css" rel="stylesheet">
+    <link href="../../bootstrap/css/bootstrap-select.css" rel="stylesheet">
+
+    <link HREF="../../CSS/custom/common.css" rel="stylesheet">
+    <link href="../../CSS/custom/header.css" rel="stylesheet">
+    <link href="../../CSS/custom/realTimeData.css" rel="stylesheet">
+    <link href="../../CSS/custom/analyzeData.css" rel="stylesheet">
+
+    <script src="../../JavaScript/jQuery/jquery-2.1.4.js"></script>
+    <script src="../../bootstrap/js/bootstrap.js"></script>
+    <script src="../../JavaScript/jQuery/jquery.cookie.js"></script>
+    <script src="../../JavaScript/other/chart.js"></script>
+    <script src="../../JavaScript/jQuery/nanoScrollerJS.js"></script>
+    <script src="../../JavaScript/jQuery/icheck.js"></script>
+    <script src="../../bootstrap/js/bootstrap-select.js"></script>
+    <script src="../../JavaScript/other/underscore.js"></script>
+    <script src="../../JavaScript/backbone/backbone.js"></script>
+    <script src="../../JavaScript/backbone/backbone.relations.js"></script>
+    <script src="../../JavaScript/other/two.js"></script>
+
+    <script src="../../JavaScript/custom/main.js"></script>
+
+    <script type="tmpl" id="primaryHeader">
+        <div class="container-fluid background">
+        <header class="row ">
+            <div class="col-lg-12">
+                <div class="pull-left">
+                    <a class="logocur" href="#">
+                        <img class="logo block" src="../../image/logo.png">
+                        <img class="siteName" src="../../image/name.png">
+                        <h1 class="none">水质管理系统
+                            <small>动态测评水功能区水质</small>
+                        </h1>
+                    </a>
+                </div>
+            </div>
+        </header>
+    </script>
+    <!--暂时废弃， 因为两个组件和结构很可能不同-->
+    <script type="tmpl" id="header">
+            <div class="container-fluid allHeight">
+        <header class="row">
+            <div class="col-lg-12">
+                <div class="pull-left">
+                    <a class="logocur" href="#">
+                        <img class="logo block" src="../../image/logo.png">
+                        <img class="siteName" src="../../image/name.png">
+                        <h1 class="none">水质管理系统
+                            <small>动态测评水功能区水质</small>
+                        </h1>
+                    </a>
+                </div>
+                <div class="btn-group col-xs-push-2 switchPage">
+                    <a href="#" class="btn btn-default">实时数据</a>
+                    <a href="#" class="btn btn-default">数据分析</a>
+                </div>
+                <div class="pull-right userStatu">
+                    <button class="btn btn-default" type="button">设置</button>
+                    <span><%-data.username%></span>
+                </div>
+            </div>
+        </header>
+    </script>
+    <script type="tmpl" id="footer">
+            <footer class="text-center">
+        <div >
+            <a >关于我们</a>
+            <span>&#8226;</span>
+            <a >联系我们</a>
+            <span>&#8226;</span>
+            <a >帮助中心</a>
+        </div>
+        <div>Copyright © 2016-2016 水质管理系统. 当前呈现版本 16.02.02浙ICP备15005796号-2</div>
+        </footer>
+        </div>
+    </script>
+
+    <script type="tmpl" id="signUp">
+        <div class="row ">
+    <div class="col-xs-8 col-xs-push-2">
+        <div id="signUpFormContainer" class="formContainer" >
+            <h2>注册账号</h2>
+            <form id="signUpForm" class="form-horizontal" noValidate>
+                <div class="form-group">
+                    <div class="col-xs-6">
+                        <div class="form-group form-group-lg has-feedback" >
+                            <label for="account" class="col-xs-3  control-label">账号</label>
+                            <div class="col-xs-9">
+                                <input id="account" class="form-control " type="email" name="account" autocomplete="off" placeholder="email@example.com"  tabindex="1" autofocus maxlength="30" required spellcheck="false">
+                                <span class="form-control-feedback glyphicon "></span>
+                            </div>
+
+                        </div>
+                        <div class="form-group form-group-lg has-feedback">
+                            <label class="col-xs-3  control-label" for="username">用户名</label>
+                            <div class=" col-xs-9">
+                                <input id="username" class="form-control"  type="text" name="username" tabindex="2" placeholder="2到10位非符号字符" required spellcheck="false" pattern="\w{2,10}" maxlength="10" autocomplete="off">
+                                <span class=" glyphicon form-control-feedback"></span>
+                            </div>
+
+                        </div>
+                        <div class="form-group form-group-lg has-feedback">
+                            <label class="col-xs-3  control-label" for="phoneNumber">联系电话</label>
+                            <div class=" col-xs-9">
+                                <input id="phoneNumber" class="form-control"  type="tel" name="phoneNumber" tabindex="3" placeholder="手机号" pattern="\d{11}" required maxlength="11" autocomplete="off">
+                                <span class=" glyphicon form-control-feedback"></span>
+                            </div>
+                        </div>
+                        <div class="form-group form-group-lg">
+                            <label class="col-xs-3 control-label" for="paperType">证件类型</label>
+                            <div class="col-xs-9">
+                                <select id="paperType" class="form-control " name="paperType" tabindex="4" >
+                                    <option value="IDCard">身份证</option>
+                                    <option value="starfCard">职工证</option>
+                                    <option value="teacherCard">教师证</option>
+                                    <option value="studentCard">学生证</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group form-group-lg has-feedback">
+                            <label class="col-xs-3  control-label" for="cardNumber">证件号码</label>
+                            <div class=" col-xs-9">
+                                <input id="cardNumber" class="form-control"  type="text" name="cardNumber" tabindex="5" placeholder="8到15位数字" required pattern="\d{8,15}" maxlength="15" autocomplete="off">
+                                <span class=" glyphicon form-control-feedback"></span>
+                            </div>
+                        </div>
+                        <div class="form-group form-group-lg">
+                            <div class="col-xs-10 col-xs-push-2">
+                                <p id="promptMassage" class="form-control-static text-danger"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+
+                        <div class="form-group form-group-lg has-feedback">
+                            <label class="col-xs-3  control-label" for="workPlace">所在单位</label>
+                            <div class=" col-xs-9">
+                                <input id="workPlace" class="form-control"  type="text" name="workPlace" tabindex="6" placeholder="不多于20个字符" pattern="\w{1,20}" required spellcheck="false" maxlength="20" autocomplete="off">
+                                <span class=" glyphicon form-control-feedback"></span>
+                            </div>
+                        </div>
+                        <div class="form-group form-group-lg has-feedback" >
+                            <label class="col-xs-3  control-label" for="remark">备注</label>
+                            <div class=" col-xs-9">
+                                <input id="remark" class="form-control " type="text" name="remark" tabindex="7" placeholder="可选" maxlength="50" spellcheck="false" autocomplete="off">
+                                <span class=" glyphicon form-control-feedback"></span>
+                            </div>
+                        </div>
+                        <div class="form-group form-group-lg has-feedback">
+                            <!--id命待修改-->
+                            <label class="col-xs-3  control-label" for="authorisation">邀请码</label>
+                            <div class=" col-xs-9">
+                                <input id="authorisation" class="form-control"  type="text" name="authorisation" tabindex="8" placeholder="10位数字" pattern="\d{10}" maxlength="10" required autocomplete="off">
+                                <span class=" glyphicon form-control-feedback "></span>
+                            </div>
+                        </div>
+                        <div class="form-group form-group-lg has-feedback ">
+                            <label for="password" class="control-label col-xs-3">密码</label>
+                            <div class="col-xs-9">
+                                <input id="password" class="form-control" type="password" name="password" tabindex="9" placeholder="6到15位字母或数字"  required pattern="[a-zA-Z0-9]{6,15}" maxlength="15" >
+                                <span class=" glyphicon form-control-feedback"></span>
+                            </div>
+                        </div>
+                        <div class="form-group form-group-lg has-feedback">
+                            <label for="passwordRepeat" class="control-label col-xs-3" >重复密码</label>
+                            <div class="col-xs-9">
+                                <input id="passwordRepeat" class="form-control" type="password" name="passwordRepeat" tabindex="10" placeholder="重复密码" maxlength="15" required pattern="[a-zA-Z0-9]{6,15}">
+                                <span class=" glyphicon form-control-feedback"></span>
+                            </div>
+                        </div>
+                        <div class="form-group form-group-lg ">
+                            <div class="col-xs-8 form-control-static center" >
+                                <span class="center">已有账号?</span>
+                                <a id="toLoginIn" href="#" tabindex="-1">马上登录</a>
+                            </div>
+
+                            <div class="col-xs-4 pull-right">
+                                <button class="form-control bold" type="submit"  tabindex="11" >注册</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+    </script>
+    <script type="tmpl" id="loginIn">
+        <div class="row" >
+            <div class="col-xs-8 col-xs-push-2">
+                <div id="loginInFormContainer" class="formContainer">
+                    <div>
+                        <h2 >欢迎登录</h2>
+                        <form id="loginInForm" class="form-horizontal" novalidate>
+                            <div class="form-group form-group-lg">
+                                <label class="col-xs-2  control-label" for="level">级别</label>
+                                <div class=" col-xs-10">
+                                    <select id="level" class="form-control col-xs-10"  name="level"  tabindex="1" autofocus >
+                                        <option value="normal">普通</option>
+                                        <option value="specialist">专家</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group form-group-lg">
+                                <label for="account" class="col-xs-2  control-label">账号</label>
+                                <div class="col-xs-10">
+                                    <input id="account" class="form-control" type="email" name="account" placeholder="email" tabindex="2"  autocomplete="on" required spellcheck="false" value="<%- data.account %>">
+                                </div>
+                            </div>
+                            <div class="form-group form-group-lg">
+                                <label for="password" class="control-label col-xs-2">密码</label>
+                                <div class="col-xs-10">
+                                    <input id="password" class="form-control" type="password" name="password" tabindex="3"  maxlength="15"  pattern="[a-zA-Z0-9]{6,15}" required >
+                                </div>
+                            </div>
+                            <div class="form-group form-group-lg">
+                                <div class="col-xs-6 center">
+                                    <a  class="center" href="#" >忘记登录密码</a>
+                                </div>
+                                <div class="col-xs-6 center">
+                                    <a id="toSignUp" href="#signUp">注册账号</a>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-6">
+                                    <div class="form-group form-group-lg">
+                                        <div class="col-xs-12">
+                                            <span id="promptMassage" class="form-control-static bold <%- data.textColor%>"><%= data.message%></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="form-group form-group-lg">
+                                        <div class="col-xs-6">
+                                            <div class="checkbox"  >
+                                                <label >
+                                                    <input  id="storePassword" class="" type="checkbox" tabindex="4">
+                                                    记住密码
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6">
+                                            <button class="form-control bold" type="submit"  tabindex="5">登录</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </script>
+
+    <script type="tmpl" id="rightList">
+        <thead>
+            <tr>
+                <td><input id='<%-data.titleObject.HTMLname%>' name='<%-data.titleObject.HTMLname%>'  type='checkbox'  <%-data.seletedCheckbox[data.titleObject.HTMLname]%>  ></td>
+                <td><label for='<%-data.titleObject.HTMLname%>'><%=data.titleObject.name%></label></td>
+            </tr>
+        </thead>
+        <tbody>
+            <%_.each(data.itemlistObject, function (item) {%>
+                <tr>
+                    <td><input class="asideListSelection" name='<%-item.HTMLname%>' id='<%-item.HTMLname%>' type='checkbox'  <%-data.seletedCheckbox[item.HTMLname]%> ></td>
+                    <td class="tableTbodyTdFIX"><label for='<%-item.HTMLname%>' class='tableLableFIX'><%=item.name%></label></td>
+                </tr>
+            <%});%>
+        </tbody>
+
+
+    </script>
+
+    <script type="tmpl" id="leftChart">
+    <div class='container-fluid'>
+
+        <%_.each( data.allUIData, function ( item ,index ) {
+				if (index === 0 ) {%>
+                    <article class="row">
+                        <main class="col-xs-12">
+                            <figure >
+                                <canvas id='canvas<%-index%>' class="center-block" width="900" height="400"></canvas>
+                                <figcaption>
+                                    <h5 style="text-align: center"><%-data.header.startTime%>至<%-data.header.endTime%>，平均污染物含量综合分析</h5>
+                                </figcaption>
+                                <ul class="list-inline" style="text-align: center">
+                                    <%_.each( item.caption , function ( innerItem ) {%>
+                                         <li style="color: <%-innerItem.color.strokeColor%>" > <%-innerItem.name%> </li>
+                                    <%})%>
+                                </ul>
+                            </figure>
+                        </main>
+                    </article>
+
+
+				<%} else if ( index % 2 === 1 ) {%>
+
+                    <div class="row">
+                    <div class="col-xs-6">
+					<article class="row">
+                        <main class="col-xs-8">
+                             <canvas id='canvas<%-index%>' class="center-block" width="280" height="400"></canvas>
+                        </main>
+                        <aside class="col-xs-4">
+                            <ul class="list-group">
+                                <li class="list-group-item">名称<h5 style="text-align: center"><%-item.caption%>含量<%-item.aside.intervalDay%>日平均值分析</h5></li>
+
+                                <%_.each(item.aside.waterlevel, function ( innerItem ) {%>
+					                <li class="list-group-item"><%-innerItem.name%><output><%-innerItem.relation%><%-innerItem.value%></output></li>
+				                <%})%>
+
+                                <li class="list-group-item">平均值<output class=""><%-item.aside.average%></output></li>
+                                <li class="list-group-item">单位<span><%-item.aside.unit%></span></li>
+                            </ul>
+                        </aside>
+                     </article>
+                     </div>
+				<%} else {%>
+
+				    <div class='col-xs-6'>
+				    <article class="row">
+                        <main class="col-xs-8">
+                             <canvas id='canvas<%-index%>' class="center-block" width="280" height="400"></canvas>
+                        </main>
+                        <aside class="col-xs-4">
+                            <ul class="list-group">
+                                <li class="list-group-item">名称<h5 style="text-align: center"><%-item.caption%>含量<%-item.aside.intervalDay%>日平均值分析</h5></li>
+
+                                <%_.each(item.aside.waterlevel, function ( innerItem ) {%>
+					                <li class="list-group-item"><%-innerItem.name%><output><%-innerItem.relation%><%-innerItem.value%></output></li>
+				                <%})%>
+
+                                <li class="list-group-item">平均值<output class=""><%-item.aside.average%></output></li>
+                                <li class="list-group-item">单位<span><%-item.aside.unit%></span></li>
+                            </ul>
+                        </aside>
+                    </article>
+                    </div>
+                    </div>
+				<%}
+		} )%>
+
+
+
+    </script>
+    <script type="tmpl" id="frontChart">
+        <div class="container-fluid">
+                            <%_.each( data.allUIData, function ( item, index ) {%>
+
+                            <article class="row">
+                                <main class="col-xs-7">
+                                    <canvas id='canvas<%-index%>' class="center-block" width="530" height="350"></canvas>
+                                </main>
+                                <aside class="col-xs-5">
+                                    <table class="table">
+                                        <caption>
+                                            <%-item.aside.caption.startTime%> 至 <%-item.aside.caption.endTime%>，水质变化趋势分析
+                                            <ul class="list-inline ">
+                                                <%_.each( item.aside.caption.colorWithMainContentList , function ( innerItem ) {%>
+                                                <li style="color: <%- innerItem.color.strokeColor%>" > <%-innerItem.name%> </li>
+                                                <%})%>
+                                            </ul>
+                                        </caption>
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <%_.each( item.aside.thead, function ( innerItem ) {%>
+                                                <th><%-innerItem%></th>
+                                                <%} )%>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            <%_.each( item.aside.tbody, function ( tr ) {%>
+                                            <tr>
+                                                <%_.each( tr, function ( td, index ) {
+                                                if ( index === 0 ) {%>
+                                                <th><%-td%></th>
+                                                <%} else if ( index === 1 ) {%>
+                                                <td><%-td%></td>
+                                                <%} else {%>
+                                                <td><%-td.relation%><%-td.value%></td>
+                                                <%}
+                                                } )%>
+                                            </tr>
+                                            <%} )%>
+
+                                        </tbody>
+                                    </table>
+                                </aside>
+                            </article>
+
+                            <%} )%>
+                        </div>
+
+
+
+    </script>
+    <script type="tmpl" id="overChart">
+
+         <div class='container-fluid'>
+             <%_.each( data.allUIData, function ( item, index ) {%>
+                 <article class="row">
+                     <main class="col-xs-8">
+                         <canvas id='canvas<%-index%>' class="center-block" width="280" height="400"></canvas>
+                     </main>
+                     <aside class="col-xs-4">
+                         <ul class="list-group">
+                             <li class="list-group-item">名称
+                                 <h5 style="text-align: center">
+                                     <%-item.aside.caption.time%>
+                                     <div>污染物累积含量分析(
+                                        <%var len = _.size( item.aside.caption.accuItemList )
+                                        _.each( item.aside.caption.accuItemList, function ( innerItem, index ) {
+                                        if ( index === len - 1 ) {%>
+                                        <%-innerItem%>
+                                        <%} else {%>
+                                        <%-innerItem%>,
+                                        <%}
+                                        })%>
+
+                                     )</div>
+
+
+
+                                     <ul class="list-inline ">
+                                          <%_.each( item.aside.caption.colorWithMainContentList , function ( innerItem ) {%>
+
+                                          <li style="color: <%-innerItem.color.strokeColor%>" > <%-innerItem.name%> </li>
+                                          <%})%>
+                                     </ul>
+
+
+                                 </h5>
+                             </li>
+
+                             <%_.each(item.aside.waterlevel, function ( innerItem ) {%>
+                             <li class="list-group-item"><%-innerItem.name%><output><%-innerItem.relation%><%-innerItem.value%></output></li>
+                             <%})%>
+
+                             <li class="list-group-item">平均累积值<output class=""><%-item.aside.average%></output></li>
+                         </ul>
+                     </aside>
+                 </article>
+             <%} )%>
+         </div>
+
+
+     </script>
+
+    <script type="tmpl" id="leftHeader">
+        <div class="row">
+            <h4 class="h6" style="text-align: center" class='col-xs-12'>
+            <%-data.header.startTime%>至<%-data.header.endTime%>,
+            在
+            <%var detectedStationListLength = _.size( data.header.detectedStation )
+			_.each( data.header.detectedStation , function ( innerItem , index) {
+				if ( index === detectedStationListLength - 1) { %>
+				<%-innerItem%>
+					<%} else {%>
+				<%-innerItem%>，
+					<%}
+			})%>
+			监测站，
+
+            <%var detectedItmeListLength = _.size( data.header.detectedItmeList )
+			 _.each( data.header.detectedItmeList , function ( innerItem , index) {
+			 	if ( index === detectedItmeListLength - 1) { %>
+			 		<%-innerItem%>
+			 	<%} else {%>
+			 		<%-innerItem%>，
+			 	<%}
+			})%> 水质平均值分析。
+
+            </h4>
+        </div>
+    </script>
+
+    <script type="tmpl" id="table" >
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr style='background-color:#E1EAF4'>
+                                <th>#</th>
+                                <%_.each( data.allUIData.theadList, function ( item ) {%>
+                                <th><%-item%></th>
+                                <%} )%>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <%_.each( data.allUIData.tbodyList, function ( trData ) {%>
+                            <tr>
+                                <%_.each( trData, function ( tdData, index ) {
+                                if ( index === 0 ) {%>
+                                <th scope="row" ><%-tdData%></th>
+                                <%} else {%>
+                                <td><%-tdData%></td>
+                                <%}
+                                } )%>
+                            </tr>
+                            <%} )%>
+
+                        </tbody>
+                        <tfoot>
+
+                            <%_.each( data.allUIData.tfootList ,function ( trData ) {%>
+                            <tr>
+                                <%_.each( trData, function ( tdData, index ) {
+                                if ( index === 0 ) {%>
+                                <th scope="row" ><%-tdData%></th>
+                                <%} else {%>
+                                <td><%-tdData%></td>
+                                <%}
+                                } )%>
+                            </tr>
+                            <%} )%>
+
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </script>
+
+
+    <script type="tmpl" id="customWaterlevel">
+    <div class="container" style="width: 1060px">
+    <div class="row">
+        <div class="col-xs-12">
+            <form id="customWaterlevelForm">
+                <table id="waterlevelTable" class="table table-striped" style="padding-top: 30px" >
+                    <thead>
+                        <tr>
+                            <th><input id="waterlevelALLCheckbox" type="checkbox"></th>
+                            <th>#</th>
+                            <th>标准(ID)</th>
+                            <th>pH</th>
+                            <th>溶解氧(ml/L)</th>
+                            <th>氨氮(ml/L)</th>
+                            <th>高锰酸钾(ml/L)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% _.each( data, function( item, index ){ %>
+                            <tr data-index="<%-index + 1%>"  data-id="<%-item.id%>">
+                                <%if ( item.id === "waterlevel1" || item.id === "waterlevel2" || item.id === "waterlevel3" ) {%>
+                                    <td><input disabled class="warterlevelCheckbox"  type="checkbox"></td>
+                                <%} else { %>
+                                    <td><input class="warterlevelCheckbox"  type="checkbox"></td>
+                                <%}%>
+                                <th><%-index + 1%></th>
+                                <td data-index="name"><span data-name="value"><%-item.name%></span></td>
+                                <!--1.hock-->
+                                <!--2.relation可以写死-->
+                                <td  data-index="pH"><span data-name="value"><%-item.pH.relation%></span></td>
+                                <td  data-index="dissolvedOxygen"> <span data-name="relation"><%-item.dissolvedOxygen.relation%></span><span  data-name="value" ><%-item.dissolvedOxygen.value%></span> </td>
+                                <td  data-index="ammoniaNitrogen"> <span data-name="relation"><%-item.ammoniaNitrogen.relation%></span><span  data-name="value" ><%-item.ammoniaNitrogen.value%> </span> </td>
+                                <td  data-index="mineralChameleon"><span data-name="relation"><%-item.mineralChameleon.relation%></span><span data-name="value" ><%-item.mineralChameleon.value%></span> </td>
+                            </tr>
+                        <%} ) %>
+                    </tbody>
+                </table>
+
+                <div class="btn-group">
+                    <div class="btn-group">
+                        <label for="orderedItem" class="none">排序项目</label>
+                        <select id="orderedItem" class="form-control" style=";border-bottom-right-radius: 0;border-top-right-radius: 0" >
+                            <option value="dissolvedOxygen">溶解氧</option>
+                            <option value="ammoniaNitrogen">氨氮</option>
+                            <option value="mineralChameleon">高锰酸钾指数</option>
+                        </select>
+                    </div>
+                    <button  type="button" class="btn btn-default ascend">升序</button>
+                    <button type="button" class="btn btn-default descend">降序</button>
+                    <button  type="button" class="btn btn-default default">默认</button>
+
+                </div>
+                <div class="btn-group pull-right">
+                    <button id="deleteStandard" type="button" class="btn btn-default">删除</button>
+                    <button id="resetStandard" type="button" class="btn btn-default">清空</button>
+                    <button id="continueAdd" type="button" class="btn btn-default">添加</button>
+                    <button id="add" type="submit" class="btn btn-default" >保存</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+    </script>
+    <script type="tmpl" id="otherTds">
+        <td><input type="checkbox" class="warterlevelCheckbox"></td>
+         <th><%-data.index%></th>
+    </script>
+    <script type="tmpl" id="waterlevelName">
+        <td>
+                                <div class="input-group input-group-sm">
+                                    <input class="form-control borderFix" type="text" name="name" required placeholder="少于15个字符" value="<%-data.value%>">
+                                </div>
+                            </td>
+    </script>
+    <script type="tmpl" id="pHTd">
+        <td>
+                                <div class="input-group input-group-sm">
+                                    <input class="form-control" type="number" name="min" required placeholder=">0" step="0.001" min="0.001" value="<%-data.startValue%>">
+                                    <span class="input-group-addon">-</span>
+                                    <input class="form-control" type="number" name="max" required placeholder=">0" step="0.001" min="0.001" value="<%-data.endValue%>">
+                                </div>
+                            </td>
+    </script>
+    <script type="tmpl" id="dissolvedOxygenTd">
+        <td>
+        <div class="input-group input-group-sm">
+                                    <span class="input-group-addon">≥</span>
+                                    <input class="form-control" type="number" name="dissolvedOxygen" required placeholder="大于0的数字" step="0.001" min="0.001" value="<%-data.value%>" >
+                                </div>
+                                </td>
+    </script>
+    <script type="tmpl" id="ammoniaNitrogenTd">
+        <td>
+        <div class="input-group input-group-sm">
+            <span class="input-group-addon">≤</span>
+            <input class="form-control" type="number" name="ammoniaNitrogen" required placeholder="大于0的数字" step="0.001" min="0.001" value="<%-data.value%>">
+        </div>
+        </td>
+    </script>
+    <script type="tmpl" id="mineralChameleonTd">
+        <td>
+                                <div class="input-group input-group-sm" >
+                                    <span class="input-group-addon">≤</span>
+                                    <input class="form-control" type="number" name="mineralChameleon" required placeholder="大于0的数字"  step="0.001" min="0.001" value="<%-data.value%>">
+                                </div>
+                            </td>
+    </script>
+
+
+
+
+    <script type="tmpl" id="briefTable">
+        <table class="table">
+                        <caption><h4 style="display: inline;vertical-align:bottom"><%=data.caption%><span>&emsp;</span><small><%=data.time%></small></h4>
+                            <a class="btn btn-default" style="float: right;margin-top: -10px" id="toDetailTable" >详细信息</a></caption>
+                        <thead>
+                        <tr>
+                            <%_.each( data.thead, function( item, index ){%>
+                                <th><%=item%></th>
+                            <%} )%>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <%_.each( data.tbody, function( tr ) {%>
+                                <tr>
+                                    <%_.each( tr, function( td, index ) {%>
+                                        <%if (index === 0 ){%>
+                                            <th scope="row"><%=td%></th>
+                                        <%} else{ %>
+                                            <td><%=td%></td>
+                                        <%}%>
+                                    <%})%>
+                                </tr>
+                            <%} )%>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>专家建议</th>
+                                <td colspan="4" style="width: 180px"><%=data.advice%></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+
+    </script>
+    <script type="tmpl" id="leftDetailTable">
+        <div style="width: 1228px;margin: auto">
+        <div> <h3 style="text-align: center"><%=data.other.caption%></h3></div>
+            <table class="table" style="font-size: 10px;width: 400px;float: left">
+                <thead>
+                <tr>
+                    <%_.each( data.left.thead, function( item, index ){%>
+                        <th><%=item%></th>
+                    <%} )%>
+                </tr>
+                </thead>
+                <tbody>
+                    <%_.each( data.left.tbody, function( tr ) {%>
+                        <tr>
+                            <%_.each( tr, function( td, index ) {%>
+                                <%if (index === 0 ){%>
+                                    <th><%=td%></th>
+                                    <%} else{ %>
+                                    <td><%=td%></td>
+                                <%}%>
+                            <%})%>
+                        </tr>
+                    <%} )%>
+                </tbody>
+            </table>
+    </script>
+    <script type="tmpl" id="rightDetailTable">
+        <table class="table" style="font-size: 10px;width: 400px;float: left;margin-top: 33px;margin-left: 14px">
+                <tbody >
+                <tr>
+                    <th>备注</th>
+                    <td colspan="3" style="width: 300px"><%=data.right.remark%></td>
+                </tr>
+                <tr>
+                    <th>私人备注</th>
+                    <td colspan="3" style="width: 300px">dasdasdasdasdasdasd</td>
+                </tr>
+                </tbody>
+            </table>
+
+
+        </div>
+    </script>
+    <script type="tmpl" id="detectedStationDetailTable">
+
+            <table class="table" style="width: 400px;font-size: 10px;float: left;margin-top: 33px;margin-left: 14px">
+        <tbody>
+        <tr>
+            <th>时间</th>
+            <td><%=data.middle.time%></td>
+            <th>站点情况</th>
+            <td><%=data.middle.state%></td>
+        </tr>
+        <tr>
+            <th >流域</th>
+            <td ><%=data.middle.watershedName%></td>
+            <th>断面属性</th>
+            <td><%=data.middle.section%></td>
+        </tr>
+        <tr>
+            <th>站点简介</th>
+            <td colspan="3" style="width: 300px"><%=data.middle.detail%></td>
+        </tr>
+        </tbody>
+    </table>
+    </script>
+    <script type="tmpl" id="watershedDetailTable">
+
+            <table class="table" style="width: 400px;font-size: 10px;float: left;margin-top: 33px;margin-left: 14px">
+                <tbody>
+                <tr>
+                    <th>时间</th>
+                    <td><%=data.middle.time%></td>
+                    <th>流域情况</th>
+                    <td><%=data.middle.normalStateCount%>/<%=data.middle.detectedStationCount%> 正常</td>
+                </tr>
+                <tr>
+                    <th>流经省份</th>
+                    <td><%=data.middle.province%></td>
+                    <th>流域面积</th>
+                    <td><%=data.middle.watershedArea%>平方米</td>
+                </tr>
+                <tr>
+                    <th>流域简介</th>
+                    <td colspan="3" style="width: 300px"><%=data.middle.detail%></td>
+                </tr>
+                </tbody>
+            </table>
+
+
+
+
+
+    </script>
+
+
+
+    <style>
+        /*@import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc2/css/bootstrap-glyphicons.css");*/
+    </style>
+
+    <style>
+
+
+    </style>
+
+    <script>
+
+    </script>
+</head>
+<body>
+<div class="nano">
+    <div class="nano-content">
+        <div class="container-fluid">
+            <header class="row ">
+                <div class="col-lg-12">
+                    <div class="pull-left">
+                        <a class="logocur" href="#">
+                            <img class="logo block" src="../../image/logo.png">
+                            <img class="siteName" src="../../image/name.png">
+                            <h1 class="none">水质管理系统
+                                <small>动态测评水功能区水质</small>
+                            </h1>
+                        </a>
+                    </div>
+                    <div class="btn-group col-xs-push-2 switchPage"  id="switchPage" data-toggle="buttons" >
+                        <label class="btn btn-primary ">
+                            <input type="radio" id="showRealTimeData" autocomplete="off" > 实时数据
+                        </label>
+                        <label class="btn btn-primary active">
+                            <input type="radio" id="analyseData" autocomplete="off" checked> 数据分析
+                        </label>
+                    </div>
+                    <div class="pull-right userStatu">
+                        <button class="btn btn-default" type="button">设置</button>
+                        <span><%-data.username%></span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="row">
+                <div class="col-xs-6" >
+                    <img src="../../image/waterMap/country.jpg" usemap="#countryMap" style="width: 100%; height: 100vh">
+
+                    <map name="countryMap" id="countryMap">
+                        <area shape="rect" coords="419,54,496,77" alt="松花江流域" id="songhuajiang">
+                        <area shape="rect" coords="373,105,436,124" alt="辽河流域" id="liaohe">
+                        <area shape="rect" coords="379,174,442,194" alt="海河流域">
+                        <area shape="rect" coords="454,203,517,224" alt="淮河流域">
+                        <area shape="rect" coords="476,236,539,257" alt="太湖流域">
+                        <area shape="rect" coords="269,270,333,291" alt="长江流域">
+                        <area shape="rect" coords="295,202,357,224" alt="黄河流域">
+                        <area shape="rect" coords="304,342,367,364" alt="珠江流域">
+                        <area shape="rect" coords="145,266,209,289" alt="西南诸河">
+                        <area shape="rect" coords="354,317,416,338" alt="东南诸河">
+                        <area shape="rect" coords="266,317,329,338" alt="滇池流域">
+                        <area shape="rect" coords="482,262,544,284" alt="巢湖流域">
+                        <area shape="rect" coords="443,288,518,309" alt="南水北调东线">
+                        <area shape="rect" coords="289,238,367,258" alt="南水北调中线">
+                    </map>
+                </div>
+                <div class="col-xs-6" id="animationUI" style="height: 100vh; background-color: #8ab7a0;">
+                    <div class="row" style="height: 25%;position: relative">
+                        <div class="ship">
+                            <div class="ship-wrap">
+                                <div class="ship-inner">
+                                    <div class="ship-top">
+                                        <div class="left"></div>
+                                        <div class="middle"></div>
+                                        <div class="right"></div>
+                                    </div>
+                                    <div class="ship-middle">
+                                        <div class="left"></div>
+                                        <div class="middle">
+                                            <div class="top"></div>
+                                            <div class="bottom">
+                                                <div class="inner"></div>
+                                            </div>
+                                        </div>
+                                        <div class="right"></div>
+                                    </div>
+                                    <div class="ship-bottom">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="water">
+                                <div class="drops clearfix drops-1">
+                                    <span class="drop drop-a"></span>
+                                    <span class="drop drop-b"></span>
+                                    <span class="drop drop-c"></span>
+                                    <span class="drop drop-d"></span>
+                                    <span class="drop drop-e"></span>
+                                    <span class="drop drop-f"></span>
+                                    <span class="drop drop-g"></span>
+                                    <span class="drop drop-h"></span>
+                                </div>
+                                <div class="drops clearfix drops-2">
+                                    <span class="drop drop-a"></span>
+                                    <span class="drop drop-b"></span>
+                                    <span class="drop drop-c"></span>
+                                    <span class="drop drop-d"></span>
+                                    <span class="drop drop-e"></span>
+                                    <span class="drop drop-f"></span>
+                                    <span class="drop drop-g"></span>
+                                    <span class="drop drop-h"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="height: 7%;position: relative">
+                        <div class="fish">
+                            <div class="fish-wrap">
+                                <div class="fish-templet">
+                                    <div class="eye">
+                                    </div>
+                                    <div class="tails">
+                                    </div>
+                                </div>
+                                <div class="fish-templet fish-small">
+                                    <div class="eye">
+                                        <div class="pupil"></div>
+                                    </div>
+                                    <div class="tails">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="height: 7%;position: relative;margin-top:10px">
+                        <div class="fish">
+                            <div class="fish-wrap fish-wrap1">
+                                <div class="fish-templet">
+                                    <div class="eye">
+                                    </div>
+                                    <div class="tails">
+                                    </div>
+                                </div>
+                                <div class="fish-templet fish-small">
+                                    <div class="eye">
+                                        <div class="pupil"></div>
+                                    </div>
+                                    <div class="tails">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="height: 50%;position: relative">
+                        <div class="whale">
+                            <div class="whale-wrap">
+                                <div class="body">
+                                    <div class="body-bottom">
+                                        <div class="left-fin"></div>
+                                        <div class="fin"></div>
+                                        <div class="tail-fin">
+                                            <div class="top"></div>
+                                            <div class="bottom"></div>
+                                        </div>
+                                    </div>
+                                    <div class="body-top">
+                                        <div class="mouth">
+                                            <div class="teeth1"></div>
+                                            <div class="teeth2"></div>
+                                            <div class="teeth3"></div>
+                                            <div class="teeth4"></div>
+                                        </div>
+                                        <div class="eye">
+                                            <div class="pupil"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="shadow"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bubbles bubble-1"></div>
+                    <div class="bubbles bubble-5"></div>
+                    <div class="bubbles bubble-2"></div>
+                    <div class="bubbles bubble-6"></div>
+                    <div class="bubbles bubble-3"></div>
+                    <div class="bubbles bubble-7"></div>
+                    <div class="bubbles bubble-4"></div>
+                    <div class="bubbles bubble-8"></div>
+                </div>
+                <div class="col-xs-6" id="rightContent" style="display: none">
+                    <div class="row rightContentItemMarginFix" >
+                        <!--监测站到流域的点击，bug 待考虑-->
+                        <div class="col-xs-6 col-xs-push-1" id="watershedMap_view">
+                    <span style="position: relative">
+
+                        <!--默认动画， 待调整-->
+                        <!--<div id="box">-->
+                            <!--<div id="tile01">-->
+                                <!--<div id="mask">Water</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+                        <!--第二层-->
+                        <span id="detectedStationPotMap" style="position: absolute;"></span>
+                        <!--第一层-->
+                        <img class="mapImg songhuajiang none" src="../../image/waterMap/songhuajiang.gif"
+                             usemap="#songhuajiang_Map">
+                        <img class="mapImg liaohe none" src="../../image/waterMap/liaohe.gif" usemap="#liaohe_Map">
+
+                        <!--背景层-->
+                        <img class="backgroudImg songhuajiang none" src="../../image/waterMap/songhuajiang.gif">
+                        <img class="backgroudImg liaohe none" src="../../image/waterMap/liaohe.gif">
+
+                    </span>
+
+                            <map name="liaohe_Map" id="liaohe_Map" class="songhuajiang">
+                                <area shape="circle" coords="153,118,4" href="#" alt="辽宁铁岭朱尔山" id="liaoning_tieling_zhuershan">
+                                <area shape="circle" coords="111,151,4" href="#" alt="辽宁盘锦兴安">
+                                <area shape="circle" coords="120,155,4" href="#" alt="辽宁营口辽河公园">
+                                <area shape="circle" coords="158,141,4" href="#" alt="辽宁抚顺大伙房水库">
+                                <area shape="circle" coords="142,150,4" href="#" alt="辽宁辽阳汤河水库">
+                                <area shape="circle" coords="163,168,4" href="#" alt="辽宁丹东鸭绿江桥">
+                            </map>
+
+
+                            <map name="songhuajiang_Map" id="songhuajiang_Map" class="liaohe">
+                                <area shape="circle" coords="154,161,4" alt="黑龙江肇源">
+                                <area shape="circle" coords="272,127,4" alt="黑龙江同江">
+                                <area shape="circle" coords="167,173,4" alt="吉林长春松花江村">
+                                <area shape="circle" coords="127,140,4" alt="吉林白城白沙滩">
+                                <area shape="circle" coords="194,90,4" alt="黑龙江黑河" id="heilongjiang_heihe">
+                                <area shape="circle" coords="67,83,4" alt="内蒙古呼伦贝尔黑山头" id="neimenggu_hulunbeier_heishantou">
+                                <area shape="circle" coords="303,118,4" alt="黑龙江抚远乌苏镇">
+                                <area shape="circle" coords="238,186,4" alt="吉林延边圈河">
+                            </map>
+
+
+                        </div>
+                        <div class="col-xs-3 col-xs-push-2" id="markSelected_view" style="height: 259px">
+                            <form class="form-horizontal" id="markSelected">
+                                <h4>水质对比</h4>
+                                <div class="form-group form-group-sm">
+                                    <label class="control-label" for="waterlevel">
+                                        对比标准
+                                    </label>
+                                    <select class="form-control" id="waterlevel" name="waterlevel">
+                                        <option value="waterlevel1">I类</option>
+                                        <option value="waterlevel2">II类</option>
+                                        <option value="waterlevel3">III类</option>
+                                        <option value="custom">自定义</option>
+                                    </select>
+                                </div>
+                                <div class="form-group form-group-sm">
+                                    <label class="control-label" for="detectedItem">
+                                        标记项目
+                                    </label>
+                                    <select class="form-control" name="detectedItem" id="detectedItem">
+                                        <option value="mineralChameleon">高锰酸钾指数</option>
+                                        <option value="dissolvedOxygen">溶解氧</option>
+                                        <option value="ammoniaNitrogen">氨氮</option>
+                                        <option value="pH">pH</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <div class="btn-group">
+                                        <button type="reset" class="btn btn-default btn-sm" >撤销
+                                        </button>
+                                        <button type="submit" class="btn btn-default btn-sm" >确定
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row rightContentItemMarginFix" >
+                        <div class="col-xs-10 col-xs-push-1" id="briefTable_view">
+                            <table class="table">
+                                <caption>
+                                    <h4 style="display: inline;vertical-align:bottom"><span></span>
+                                        <small></small>
+                                    </h4>
+                                    <a class="btn btn-default" style="float: right;margin-top: -10px" id="toDetailTable">详细信息</a>
+                                </caption>
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>测量值</th>
+                                        <th>所处级别</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th>溶解氧</th>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th>氨氮</th>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th>高锰酸钾指数</th>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th>pH</th>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>专家建议</th>
+                                        <td colspan="4" style="width: 180px"></td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 " id="detailTable_view">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

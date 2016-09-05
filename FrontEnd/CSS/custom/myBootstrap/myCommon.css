@@ -1,0 +1,33 @@
+body {
+  background-color: #fff;
+  color: #333;
+  font-size: 14px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.42857143;
+}
+.close {
+  float: right;
+  margin-top: 5px;
+  padding: 0;
+  background-color: #fff;
+  border: none;
+  color: #838383;
+  font-size: 25px;
+  font-weight: bold;
+  line-height: 1.4;
+  opacity: 0.5;
+  -webkit-appearance: none;
+}
+.close:hover {
+  color: #838383;
+  opacity: 1;
+}
+.close:hover,
+.close:focus,
+.close:active {
+  outline: 0;
+}
+.img-responsive {
+  width: 100%;
+  height: auto;
+}

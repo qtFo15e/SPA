@@ -1,0 +1,67 @@
+//注意大小规律，总长度略小于字体大小
+@font-size-base:  14px;
+@padding-base: 6px 12px;
+
+//注意颜色规律  字体最深，其次边界，其次背景
+@btn-defaut-color: #333 ;
+@btn-default-bg: #fff;
+@btn-default-border: #ccc;
+
+
+@btn-primary-color: #fff;
+@btn-primary-bg: #337ab7;
+@btn-primary-border: darken( #337ab7, 6.5% ) ;
+
+
+.btn-color( @color, @bg, @border ) {
+  color: @color;
+  background-color: @bg;
+  border-color: @border;
+}
+
+.btn-state( @color, @bg ) {
+  &:hover, &:focus {
+    background-color: darken( @bg, 6% );
+  }
+
+  &:active {
+    background-color: darken( @bg, 12% );
+    box-shadow: 0 3px 9px  rgba( 0,0,0,0.2 ) inset ;
+
+    color: darken( @color, 12% );
+  }
+}
+
+
+.btn {
+  display: inline-block;
+  position: relative;
+
+  padding: @padding-base;
+  border: 1px solid;
+  border-radius: 4px;
+
+  font-size: @font-size-base;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 1.42857143;
+  white-space: nowrap;
+
+  cursor:pointer;
+}
+
+.btn-default {
+  .btn-color(  @btn-defaut-color, @btn-default-bg, @btn-default-border);
+  .btn-state( @btn-defaut-color, @btn-default-bg );
+}
+
+.btn-primary {
+  .btn-color( @btn-primary-color, @btn-primary-bg,@btn-primary-border );
+  .btn-state( @btn-primary-color, @btn-primary-bg );
+}
+
+
+
+
+

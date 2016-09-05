@@ -1,0 +1,65 @@
+<div class="row" >
+    <div class="col-xs-8 col-xs-push-2">
+        <div id="loginInFormContainer" class="formContainer">
+            <div>
+                <h2 >欢迎登录</h2>
+                <form id="loginInForm" class="form-horizontal" novalidate>
+                    <div class="form-group form-group-lg">
+                        <label class="col-xs-2  control-label" for="level">级别</label>
+                        <div class=" col-xs-10">
+                            <select id="level" class="form-control col-xs-10"  name="level"  tabindex="1" autofocus >
+                                <option value="normal">普通</option>
+                                <option value="specialist">专家</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group form-group-lg">
+                        <label for="account" class="col-xs-2  control-label">账号</label>
+                        <div class="col-xs-10">
+                            <input id="account" class="form-control" type="email" name="account" placeholder="email" tabindex="2"  autocomplete="on" required spellcheck="false" value="<%- data.account %>">
+                        </div>
+                    </div>
+                    <div class="form-group form-group-lg">
+                        <label for="password" class="control-label col-xs-2">密码</label>
+                        <div class="col-xs-10">
+                            <input id="password" class="form-control" type="password" name="password" tabindex="3"  maxlength="15"  pattern="[a-zA-Z0-9]{6,15}" required >
+                        </div>
+                    </div>
+                    <div class="form-group form-group-lg">
+                        <div class="col-xs-6 center">
+                            <a  class="center" href="#" >忘记登录密码</a>
+                        </div>
+                        <div class="col-xs-6 center">
+                            <a id="toSignUp" href="#signUp">注册账号</a>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-6">
+                            <div class="form-group form-group-lg">
+                                <div class="col-xs-12">
+                                    <span id="promptMassage" class="form-control-static bold <%- data.textColor%>"><%= data.message%></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="form-group form-group-lg">
+                                <div class="col-xs-6">
+                                    <div class="checkbox"  >
+                                        <label >
+                                            <input  id="storePassword" class="" type="checkbox" tabindex="4">
+                                            记住密码
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6">
+                                    <button class="form-control bold" type="submit"  tabindex="5">登录</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
