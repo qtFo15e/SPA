@@ -47,7 +47,6 @@ var signUp = function ( response , require, pathname, postData ) {
 		if ( err ) {
 			console.log( err )
 		} else {
-			console.log( formStrToMap( postData ) )
 			db.collection( "user" ).insertOne( formStrToMap( postData ) , function ( err ) {
 				db.close()
 				response.writeHead( 200,{'Content-Type': 'text/plain'}  )
@@ -77,13 +76,6 @@ var loginIn = function ( response , require, pathname, postData ) {
 					response.end()
 				}
 			} )
-
-			// cursor.some( function ( err, doc ) {
-			// 	if ( doc != null ) {
-			// 		console.log( doc )
-			// 	}
-			// } )
-
 		}
 	} )
 }
@@ -92,7 +84,7 @@ var loginIn = function ( response , require, pathname, postData ) {
 var start = function ( response , require, pathname ) {
 	var realPath
 	if ( pathname == "/" ) {
-		realPath = "../FrontEnd/HTML/SPA/SPA.html"
+		realPath = "../FrontEnd/HTML/SPA/index.html"
 	} else {
 		realPath = "../FrontEnd" + pathname
 	}
@@ -530,6 +522,120 @@ var analysis = function ( response , require, pathname, postData ) {
 				}
 			},
 			"heilongjiang_tongjiang"             : {
+				"2016/8/16": {
+					"pH"              : "5",
+					"dissolvedOxygen" : "7",
+					"ammoniaNitrogen" : "9",
+					"mineralChameleon": "11"
+				},
+				"2016/8/17": {
+					"pH"              : "12",
+					"dissolvedOxygen" : "11",
+					"ammoniaNitrogen" : "18",
+					"mineralChameleon": "14"
+				},
+				"2016/8/18": {
+					"pH"              : "17",
+					"dissolvedOxygen" : "18",
+					"ammoniaNitrogen" : "19",
+					"mineralChameleon": "20"
+				},
+				"2016/8/19": {
+					"pH"              : "17",
+					"dissolvedOxygen" : "18",
+					"ammoniaNitrogen" : "19",
+					"mineralChameleon": "20"
+				},
+				"2016/8/20": {
+					"pH"              : "17",
+					"dissolvedOxygen" : "18",
+					"ammoniaNitrogen" : "19",
+					"mineralChameleon": "20"
+				},
+				"2016/8/21": {
+					"pH"              : "17",
+					"dissolvedOxygen" : "18",
+					"ammoniaNitrogen" : "19",
+					"mineralChameleon": "20"
+				},
+				"2016/8/22": {
+					"pH"              : "17",
+					"dissolvedOxygen" : "18",
+					"ammoniaNitrogen" : "19",
+					"mineralChameleon": "20"
+				},
+				"2016/8/23": {
+					"pH"              : "17",
+					"dissolvedOxygen" : "18",
+					"ammoniaNitrogen" : "19",
+					"mineralChameleon": "20"
+				},
+				"2016/8/24": {
+					"pH"              : "17",
+					"dissolvedOxygen" : "18",
+					"ammoniaNitrogen" : "19",
+					"mineralChameleon": "20"
+				}
+
+			},
+			"liaoning_tieling_zhuershan":{
+				"2016/8/16": {
+					"pH"              : "5",
+					"dissolvedOxygen" : "7",
+					"ammoniaNitrogen" : "9",
+					"mineralChameleon": "11"
+				},
+				"2016/8/17": {
+					"pH"              : "12",
+					"dissolvedOxygen" : "11",
+					"ammoniaNitrogen" : "18",
+					"mineralChameleon": "14"
+				},
+				"2016/8/18": {
+					"pH"              : "17",
+					"dissolvedOxygen" : "18",
+					"ammoniaNitrogen" : "19",
+					"mineralChameleon": "20"
+				},
+				"2016/8/19": {
+					"pH"              : "17",
+					"dissolvedOxygen" : "18",
+					"ammoniaNitrogen" : "19",
+					"mineralChameleon": "20"
+				},
+				"2016/8/20": {
+					"pH"              : "17",
+					"dissolvedOxygen" : "18",
+					"ammoniaNitrogen" : "19",
+					"mineralChameleon": "20"
+				},
+				"2016/8/21": {
+					"pH"              : "17",
+					"dissolvedOxygen" : "18",
+					"ammoniaNitrogen" : "19",
+					"mineralChameleon": "20"
+				},
+				"2016/8/22": {
+					"pH"              : "17",
+					"dissolvedOxygen" : "18",
+					"ammoniaNitrogen" : "19",
+					"mineralChameleon": "20"
+				},
+				"2016/8/23": {
+					"pH"              : "17",
+					"dissolvedOxygen" : "18",
+					"ammoniaNitrogen" : "19",
+					"mineralChameleon": "20"
+				},
+				"2016/8/24": {
+					"pH"              : "17",
+					"dissolvedOxygen" : "18",
+					"ammoniaNitrogen" : "19",
+					"mineralChameleon": "20"
+				}
+
+			},
+			"beijinggubeikou":{
 				"2016/8/16": {
 					"pH"              : "5",
 					"dissolvedOxygen" : "7",

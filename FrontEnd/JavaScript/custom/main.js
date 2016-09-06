@@ -418,27 +418,27 @@ $( function () {
 								name    : "黑龙江同江",
 								HTMLname: "heilongjiang_tongjiang"
 							},
-							heilongjiang_fuyuan_wusuzhen   : {
-								name    : "黑龙江抚远乌苏镇",
-								HTMLname: "heilongjiang_fuyuan_wusuzhen"
-							},
-							heilongjiang_zhaoyuan          : {
-								name    : "黑龙江肇源",
-								HTMLname: "heilongjiang_zhaoyuan"
-							},
-
-							jilin_baicheng_baishatan       : {
-								name    : "吉林白城白沙滩",
-								HTMLname: "jilin_baicheng_baishatan"
-							},
-							jilin_changchun_songhuajiangcun: {
-								name    : "吉林长春松花江村",
-								HTMLname: "jilin_changchun_songhuajiangcun"
-							},
-							jilin_yanji_quanshuihe         : {
-								name    : "吉林延边圈河水",
-								HTMLname: "jilin_yanji_quanshuihe"
-							}
+							// heilongjiang_fuyuan_wusuzhen   : {
+							// 	name    : "黑龙江抚远乌苏镇",
+							// 	HTMLname: "heilongjiang_fuyuan_wusuzhen"
+							// },
+							// heilongjiang_zhaoyuan          : {
+							// 	name    : "黑龙江肇源",
+							// 	HTMLname: "heilongjiang_zhaoyuan"
+							// },
+							//
+							// jilin_baicheng_baishatan       : {
+							// 	name    : "吉林白城白沙滩",
+							// 	HTMLname: "jilin_baicheng_baishatan"
+							// },
+							// jilin_changchun_songhuajiangcun: {
+							// 	name    : "吉林长春松花江村",
+							// 	HTMLname: "jilin_changchun_songhuajiangcun"
+							// },
+							// jilin_yanji_quanshuihe         : {
+							// 	name    : "吉林延边圈河水",
+							// 	HTMLname: "jilin_yanji_quanshuihe"
+							// }
 						}
 					},
 					liaohe      : {
@@ -449,29 +449,29 @@ $( function () {
 						detail         : "。点位坐标东经119度18分23秒；北纬50度09分27秒。属于松花江流域，额尔古纳河（国界），为中俄界河。由呼伦贝尔市环境监测中心站托管，距呼伦贝尔市200公里。建于2004年12月。",
 						detectedStation: {
 							liaoning_tieling_zhuershan     : {
-								name    : "辽宁铁岭朱尔山水",
+								name    : "辽宁铁岭朱尔山",
 								HTMLname: "liaoning_tieling_zhuershan"
 							},
-							liaoning_fushun_dahuofang      : {
-								name    : "辽宁抚顺大伙房水库",
-								HTMLname: "liaoning_fushun_dahuofang"
-							},
-							liaoning_liaowang_tangheshuiku : {
-								name    : "辽宁辽阳汤河水库",
-								HTMLname: "liaoning_liaowang_tangheshuiku"
-							},
-							liaoning_panjin_xingan         : {
-								name    : "辽宁盘锦兴安",
-								HTMLname: "liaoning_panjin_xingan"
-							},
-							liaoning_yingkou_liaohegongyuan: {
-								name    : "辽宁营口辽河公园",
-								HTMLname: "liaohe_yingkou_liaohegongyuan"
-							},
-							liaoning_dongyalujiangqiao     : {
-								name    : "辽宁丹东鸭绿江桥",
-								HTMLname: "liaoning_dongyalujiangqiao"
-							}
+							// liaoning_fushun_dahuofang      : {
+							// 	name    : "辽宁抚顺大伙房水库",
+							// 	HTMLname: "liaoning_fushun_dahuofang"
+							// },
+							// liaoning_liaowang_tangheshuiku : {
+							// 	name    : "辽宁辽阳汤河水库",
+							// 	HTMLname: "liaoning_liaowang_tangheshuiku"
+							// },
+							// liaoning_panjin_xingan         : {
+							// 	name    : "辽宁盘锦兴安",
+							// 	HTMLname: "liaoning_panjin_xingan"
+							// },
+							// liaoning_yingkou_liaohegongyuan: {
+							// 	name    : "辽宁营口辽河公园",
+							// 	HTMLname: "liaohe_yingkou_liaohegongyuan"
+							// },
+							// liaoning_dongyalujiangqiao     : {
+							// 	name    : "辽宁丹东鸭绿江桥",
+							// 	HTMLname: "liaoning_dongyalujiangqiao"
+							// }
 						}
 					},
 					haihe: {
@@ -2174,7 +2174,7 @@ $( function () {
 			database: {
 				songhuajiang: {
 					"neimenggu_hulunbeier_heishantou": {
-						"2016/5/11": {
+						"2016/8/16": {
 							"pH"              : "7.28",
 							"dissolvedOxygen" : "9.70",
 							"ammoniaNitrogen" : "0.74",
@@ -2182,23 +2182,21 @@ $( function () {
 						},
 					},
 					"heilongjiang_heihe"             : {
-						"2016/5/11": {
+						"2016/8/16": {
 							"pH"              : "5",
 							"dissolvedOxygen" : "7",
 							"ammoniaNitrogen" : "9",
 							"mineralChameleon": "11"
-						},
+						}
 					},
-				},
-				liaohe      : {
-					"liaoning_tieling_zhuershan": {
-						"2016/5/11": {
-							"pH"              : "7.28",
-							"dissolvedOxygen" : "9.70",
-							"ammoniaNitrogen" : "0.74",
-							"mineralChameleon": "4.56"
-						},
-					},
+					"heilongjiang_tongjiang": {
+						"2016/8/16": {
+							"pH"              : "5",
+							"dissolvedOxygen" : "7",
+							"ammoniaNitrogen" : "9",
+							"mineralChameleon": "11"
+						}
+					}
 				}
 			}
 		}
