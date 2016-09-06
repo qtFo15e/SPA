@@ -829,10 +829,10 @@ $( function () {
 					asideSelected_model.clear()
 					asideSelected_model.attributes = _.clone( self.model.get( "preSeleceted" ) )
 
-					console.log( asideSelected_model.attributes )
+					$( "#startAnalyse" ).prop( "diabled", true )
 					$.post( "./analysis", { level: asideSelected_model.attributes.locationLevel }, function ( data ) {
 						database_model.set( "database", JSON.parse( data )  )
-						console.log( database_model )
+						$( "#startAnalyse" ).prop( "diabled", false )
 					} )
 				}
 
