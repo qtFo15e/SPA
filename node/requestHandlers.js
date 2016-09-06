@@ -132,16 +132,16 @@ var analysis = function ( response , require, pathname, postData ) {
 						"mineralChameleon": "20"
 					},
 					"2016/8/18": {
-						"pH"              : "17",
-						"dissolvedOxygen" : "18",
-						"ammoniaNitrogen" : "19",
-						"mineralChameleon": "20"
+						"pH"              : "11",
+						"dissolvedOxygen" : "0.5",
+						"ammoniaNitrogen" : "7",
+						"mineralChameleon": "2"
 					},
 					"2016/8/19": {
-						"pH"              : "17",
-						"dissolvedOxygen" : "18",
-						"ammoniaNitrogen" : "19",
-						"mineralChameleon": "20"
+						"pH"              : "4",
+						"dissolvedOxygen" : "8",
+						"ammoniaNitrogen" : "9.5",
+						"mineralChameleon": "10"
 					},
 					"2016/8/20": {
 						"pH"              : "17",
@@ -150,28 +150,28 @@ var analysis = function ( response , require, pathname, postData ) {
 						"mineralChameleon": "20"
 					},
 					"2016/8/21": {
-						"pH"              : "17",
-						"dissolvedOxygen" : "18",
-						"ammoniaNitrogen" : "19",
-						"mineralChameleon": "20"
+						"pH"              : "5",
+						"dissolvedOxygen" : "14",
+						"ammoniaNitrogen" : "15",
+						"mineralChameleon": "28"
 					},
 					"2016/8/22": {
-						"pH"              : "17",
-						"dissolvedOxygen" : "18",
-						"ammoniaNitrogen" : "19",
-						"mineralChameleon": "20"
+						"pH"              : "7",
+						"dissolvedOxygen" : "8",
+						"ammoniaNitrogen" : "9",
+						"mineralChameleon": "1"
 					},
 					"2016/8/23": {
-						"pH"              : "17",
-						"dissolvedOxygen" : "18",
-						"ammoniaNitrogen" : "19",
-						"mineralChameleon": "20"
+						"pH"              : "77",
+						"dissolvedOxygen" : "8.5",
+						"ammoniaNitrogen" : "9.9",
+						"mineralChameleon": "2.8"
 					},
 					"2016/8/24": {
-						"pH"              : "17",
-						"dissolvedOxygen" : "18",
-						"ammoniaNitrogen" : "19",
-						"mineralChameleon": "20"
+						"pH"              : "15.8",
+						"dissolvedOxygen" : "14.8",
+						"ammoniaNitrogen" : "17.99",
+						"mineralChameleon": "8.8"
 					}
 				},
 				"heilongjiang_heihe"             : {

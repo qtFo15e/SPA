@@ -930,7 +930,7 @@
                                             <!--暂时忽略此功能-->
                                             <!--1.数据量小的时候，使用取样周期误差大-->
                                             <!--2.table存在严重bug , 图形存在细微bug-->
-                                            <div class="form-group form-group-sm" style="display: none">
+                                            <div class="form-group form-group-sm" >
                                                 <label for="cycle" class="control-label">子视图取样周期</label>
                                                 <div class="input-group ">
                                                     <input id="cycle" class="form-control " name="cycle" type="number" min="1" required value="1" disabled="disabled">
@@ -1150,7 +1150,7 @@
 
                                 <map name="songhuajiang_Map" id="songhuajiang_Map" class="liaohe">
                                     <area shape="circle" coords="154,161,4" alt="黑龙江肇源">
-                                    <area shape="circle" coords="272,127,4" alt="黑龙江同江">
+                                    <area shape="circle" coords="272,127,4" alt="黑龙江同江" id="heilongjiang_tongjiang">
                                     <area shape="circle" coords="167,173,4" alt="吉林长春松花江村">
                                     <area shape="circle" coords="127,140,4" alt="吉林白城白沙滩">
                                     <area shape="circle" coords="194,90,4" alt="黑龙江黑河" id="heilongjiang_heihe">
@@ -1179,8 +1179,8 @@
                                             标记项目
                                         </label>
                                         <select class="form-control" name="detectedItem" id="detectedItem">
-                                            <option value="mineralChameleon">高锰酸钾指数</option>
                                             <option value="dissolvedOxygen">溶解氧</option>
+                                            <option value="mineralChameleon">高锰酸钾指数</option>
                                             <option value="ammoniaNitrogen">氨氮</option>
                                             <option value="pH">pH</option>
                                         </select>

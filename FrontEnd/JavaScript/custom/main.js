@@ -416,7 +416,10 @@ $( function () {
 							},
 							heilongjiang_tongjiang         : {
 								name    : "黑龙江同江",
-								HTMLname: "heilongjiang_tongjiang"
+								HTMLname: "heilongjiang_tongjiang",
+								imgCoordinate: [ 272, 127 ],
+								section      : "松花江干流",
+								detail       : "点位坐标东经119度18分23秒；北纬50度09分27秒。属于松花江流域，额尔古纳河（国界），为中俄界河。由呼伦贝尔市环境监测中心站托管，距呼伦贝尔市200公里。建于2004年12月。"
 							},
 							// heilongjiang_fuyuan_wusuzhen   : {
 							// 	name    : "黑龙江抚远乌苏镇",
@@ -1445,7 +1448,7 @@ $( function () {
 					},
 
 					returnLabel: function ( interval ) {
-						var dateList = this.model.get( "primaryDataMap" ).dateList
+						var dateList = _.clone( this.model.get( "primaryDataMap" ).dateList )
 
                         if ( interval === 1 ) {
                             return dateList
@@ -1453,7 +1456,13 @@ $( function () {
 
                         var rel = []
                         for ( ; dateList.length !== 0; ) {
-							rel.push( dateList[ 0 ] + " 至 " + dateList[ interval - 1 ] )
+                        	if ( dateList.length === 1 )  {
+								rel.push( dateList[ 0 ] + "-" + dateList[ 0 ] )
+								break
+							} else {
+								rel.push( dateList[ 0 ] + "-" + dateList[ interval - 1 ] )
+							}
+
 							dateList.splice( 0, interval )
 						}
 						return rel
@@ -1471,7 +1480,11 @@ $( function () {
 							labelKeys = dateList
 						} else {
 							for ( ; dateList.length !== 0; ) {
-								labelKeys.push( dateList[ 0 ] + " - " + dateList[ cycle - 1 ] )
+								if ( dateList.length === 1 ) {
+									labelKeys.push( dateList[ 0 ] + " - " + dateList[ 0 ] )
+								} else {
+									labelKeys.push( dateList[ 0 ] + " - " + dateList[ cycle - 1 ] )
+								}
 								dateList.splice( 0, cycle )
 							}
 						}
@@ -1544,7 +1557,11 @@ $( function () {
                                                        return detectedItem
                                                    }
                                                    relValues.push( roundAverage( values.splice( 0, mainInterval ) ) )
-												   relKeys.push( keys[ 0 ] + "至" + keys[ mainInterval - 1 ] )
+												   if ( values.length === 0 ) {
+													   relKeys.push( keys[ 0 ] + "-" + keys[ 0 ] )
+												   } else {
+													   relKeys.push( keys[ 0 ] + "-" + keys[ mainInterval - 1 ] )
+												   }
 												   keys.splice( 0, mainInterval )
 											   }
 
@@ -2174,30 +2191,30 @@ $( function () {
 			database: {
 				songhuajiang: {
 					"neimenggu_hulunbeier_heishantou": {
-						"2016/8/16": {
+						"2016/8/11": {
 							"pH"              : "7.28",
 							"dissolvedOxygen" : "9.70",
 							"ammoniaNitrogen" : "0.74",
 							"mineralChameleon": "4.56"
-						},
+						}
 					},
 					"heilongjiang_heihe"             : {
-						"2016/8/16": {
+						"2016/8/11": {
 							"pH"              : "5",
 							"dissolvedOxygen" : "7",
 							"ammoniaNitrogen" : "9",
 							"mineralChameleon": "11"
 						}
 					},
-					"heilongjiang_tongjiang": {
-						"2016/8/16": {
-							"pH"              : "5",
-							"dissolvedOxygen" : "7",
+					"heilongjiang_tongjiang" :{
+						"2016/8/11": {
+							"pH"              : "3",
+							"dissolvedOxygen" : "2",
 							"ammoniaNitrogen" : "9",
-							"mineralChameleon": "11"
-						}
+							"mineralChameleon": "18"
+						},
 					}
-				}
+				},
 			}
 		}
 	} )
@@ -2213,9 +2230,6 @@ $( function () {
 				heilongjiang_heihe             : 1,
 				//损坏
 				heilongjiang_tongjiang         : -1
-			},
-			lianghe     : {
-				neimenggu_hulunbeier_heishantou: 1
 			}
 		}
 	} )
@@ -2227,11 +2241,15 @@ $( function () {
 		defaults: {
 			neimenggu_hulunbeier_heishantou: {
 				remark: "abc",
-				advice: "def"
+				advice: "状态良好"
 			},
 			heilongjiang_heihe             : {
 				remark: "qwe",
-				advice: "rty"
+				advice: "注意监控"
+			},
+			heilongjiang_tongjiang: {
+				remark: "dasdas",
+				advice: "加强监管"
 			}
 		}
 	} )
@@ -2278,7 +2296,7 @@ $( function () {
 										   .get( "database" ),
 				//time: (new Date).toLocaleDateString(),
 				//临时数据
-				time                 : "2016/5/11",
+				time                 : "2016/8/11",
 				tableDetectedItemList: _.sortBy( self.get( "asideList" )
 													 .get( "tableBody" ).detectedItem ),
 				tableWatershedList   : self.get( "asideList" )

@@ -233,3 +233,8 @@ form .table .td {
 #uploadDataModal > div > div > div.modal-body {
     height: 350px;
 }
+
+output {
+    display: inline;
+    margin-left: 30px;
+}
