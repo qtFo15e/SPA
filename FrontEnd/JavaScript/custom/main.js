@@ -1552,14 +1552,19 @@ $( function () {
 											   var relKeys   = []
 											   var relValues = []
 
+											   if ( mainInterval === 1 ) {
+												   return detectedItem
+											   }
 											   for ( ; values.length !== 0; ) {
-                                                   if ( mainInterval === 1 ) {
-                                                       return detectedItem
-                                                   }
-                                                   relValues.push( roundAverage( values.splice( 0, mainInterval ) ) )
-												   if ( values.length === 0 ) {
+
+
+												   if (   values.length === 1 ) {
+													   relValues.push( roundAverage( values.splice( 0, mainInterval ) ) )
+
 													   relKeys.push( keys[ 0 ] + "-" + keys[ 0 ] )
 												   } else {
+													   relValues.push( roundAverage( values.splice( 0, mainInterval ) ) )
+
 													   relKeys.push( keys[ 0 ] + "-" + keys[ mainInterval - 1 ] )
 												   }
 												   keys.splice( 0, mainInterval )
