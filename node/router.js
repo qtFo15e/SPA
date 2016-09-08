@@ -4,8 +4,10 @@
 
 var route = function ( handle, pathname, response, require, postData ) {
 	console.log("About to route a request for " + pathname);
-	if ( pathname.search( / (^\/$)|(^\/bootstrap.?)|(^\/CSS.?)|(^\/JavaScript.?)|(^\/image.?)/ )  !== -1 ) {
+	if ( pathname.search( / (^\/$)|(^\/bootstrap.?)|(^\/CSS.?)|(^\/JavaScript.?)|(^\/image.?)|(^\/HTML.?)/ )  !== -1 ) {
 		handle[ "/" ]( response , require, pathname, postData  )
+	}else if ( pathname.search(  ) ){
+
 	} else if ( typeof handle[pathname] === "function" ) {
 		 handle[ pathname ]( response , require, pathname, postData )
 	} else {

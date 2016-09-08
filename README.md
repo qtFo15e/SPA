@@ -39,5 +39,8 @@
         <li>未完全替换Bootstrap的原因:由于实现思路不同及完成度不同，对原有库还存在依赖，主体功能不受影响</li>
     </ol>
 </section>
+<section>
+    <h4>未做兼容性处理，推荐在chrome中运行</h4>
+</section>
 </body>
 </html>

@@ -1692,7 +1692,37 @@ $( function () {
 						var primaryDataMap = self.model.get( "primaryDataMap" )
 
 						var label           = self.returnLabel( primaryDataMap.cycle )
-						var averageDataList = self.orderData( label, locationLevelData.averageDataMap, locationLevelData.tableMainContentList )
+
+						var mainDataMap = _.chain( locationLevelData.averageDataMap )
+										   .mapObject( function ( detectedItem ) {
+											   var values    = _.values( detectedItem )
+											   var keys      = _.keys( detectedItem )
+											   var relKeys   = []
+											   var relValues = []
+
+											   if ( primaryDataMap.cycle === 1 ) {
+												   return detectedItem
+											   }
+											   for ( ; values.length !== 0; ) {
+
+
+												   if (   values.length === 1 ) {
+													   relValues.push( roundAverage( values.splice( 0, primaryDataMap.cycle ) ) )
+
+													   relKeys.push( keys[ 0 ] + "-" + keys[ 0 ] )
+												   } else {
+													   relValues.push( roundAverage( values.splice( 0, primaryDataMap.cycle ) ) )
+
+													   relKeys.push( keys[ 0 ] + "-" + keys[ primaryDataMap.cycle - 1 ] )
+												   }
+												   keys.splice( 0, primaryDataMap.cycle )
+											   }
+
+											   return _.object( relKeys, relValues )
+										   } )
+										   .value()
+
+						var averageDataList = self.orderData( label, mainDataMap, locationLevelData.tableMainContentList )
 						//考虑直接改成List
 						var waterLevelValueMap = _.chain( self.addWaterlevelToData().averageDataMap )
 												  .values()
@@ -2958,6 +2988,10 @@ $( function () {
 
 	var countryMap_view = new make_countryMap_view( { model: realTime_model } )
 
+
+
+
+	// 辅助功能模块
 	var make_customWaterlevel_model = Backbone.Model.extend( {
 		defaults : {
 			unit         : unit_model,
@@ -3018,7 +3052,7 @@ $( function () {
 				trList = trList.reverse()
 			}
 
-			var $tbody = $( "tbody" )
+			var $tbody = $( "<tbody></tbody>" )
 			_.each( trList, function ( item ) {
 				$( item ).appendTo( $tbody )
 			} )
@@ -3301,7 +3335,8 @@ $( function () {
 
 		events: {
 			"click .detectedStation-ul li" : function ( e ) {
-
+				$( "#breadcrumb" ).popover( "hide" )
+				this.model.set( "validity1", false )
 				var $station = $( e.target )
 				var $watershed = $station.parents( "li" ).find( "span" )
 				this.model.set( "detectedStationHTMLname", $station.data( "htmlname" ) )
@@ -3313,33 +3348,42 @@ $( function () {
 				$( "#detectedStationLabel" ).text( stationName )
 				this.model.set( "validity1", true )
 			},
-			"change input": function ( e ) {
+			"change #fileSelect": function ( e ) {
 				var self = this
 				var file = e.target.files[0]
 				var reader = new FileReader()
+				var validity = true
+
+				$( "#fileSelect" ).popover( "hide" )
+				$( "#upload" ).prop( "disabled", true )
+
 				reader.readAsText( file, "gb2312" )
 
 				reader.onload = function (  ) {
+					$( "#upload" ).prop( "disabled", false )
+					self.model.set( "validity2", false )
+
 					var result = _.map( reader.result.split( "\r\n" ), function ( item ) {
 						return item.split( "," )
 					} )
 					result.pop()
-
 					var indexArr = _.map( [ "日期","溶解氧","氨氮", "高锰酸钾", "pH" ], function ( item ) {
 						var temp = result[0].indexOf( item )
 						if ( temp > -1 ) {
 							return temp
 						} else {
-							alert("格式错")
-							//???抛出异常,待写入
+							validity = false
 						}
 					} )
+					if ( !validity ){
+						return
+					}
 					result.shift()
 
 					var dateArr = _.map( result, function ( item ) {
 						return item.splice( 0 , 1 )[0]
 					} )
-					var dataArr = _.map( result, function ( item, index ) {
+					var dataArr = _.map( result, function ( item) {
 						var temp  = {}
 						temp.dissolvedOxygen = item[ indexArr[ 1 ] ]
 						temp.ammoniaNitrogen = item[ indexArr[ 2 ] ]
@@ -3354,13 +3398,33 @@ $( function () {
 					self.model.set( "detectedItemDataMap" , _.object( dateArr,  dataArr) )
 
 					self.model.set( "validity2", true )
+
+
 				}
 			},
-			"click #upload": function ( e ) {
-				if ( this.model.get( "validity1" ) && this.model.get( "validity2" ) ) {
-					var data = this.model.get( "data" )
+			"click #upload": function ( event ) {
+
+
+				var data = this.model.get( "data" )
+				var validity = true
+
+				if ( !this.model.get( "validity1" ) ) {
+					$( "#breadcrumb" ).popover( "show" )
+					validity = false
+				}
+
+				if ( !this.model.get( "validity2" ) ) {
+					$( "#fileSelect" ).popover( "show" )
+					validity = false
+				}
+
+				if ( validity ) {
 					data[ this.model.get( "watershedHTMLname" ) ] = {}
 					data[ this.model.get( "watershedHTMLname" ) ] [ this.model.get( "detectedStationHTMLname" ) ] = this.model.get( "detectedItemDataMap" )
+					$( "#upload" ).popover( "show" )
+					setTimeout( function (  ) {
+						$( "#upload" ).popover( "hide" )
+					} , 2000)
 				}
 			}
 		}
