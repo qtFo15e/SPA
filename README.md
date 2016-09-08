@@ -42,5 +42,8 @@
 <section>
     <h4>未做兼容性处理，推荐在chrome中运行</h4>
 </section>
+<section>
+     <h5>作品展示视频</h5><a> http://pan.baidu.com/s/1bK0QFs </a>
+</section>
 </body>
 </html>
