@@ -6,7 +6,7 @@
     <ol>
         <li><strong>水质分析:</strong>对三维水质数据（时间，地点，监测项）， 进行两个维度的报表分析（表格，图形）</li>
         <li><strong>水质实时数据:</strong>以地图为基础，获取对应地点的数据，与水质标准做简略比较</li>
-        <li><strong>待机主题动画:</strong>纯CSS实现</li>
+        <li><strong>待机主题动画:</strong>CSS3实现</li>
         <li><strong>登录，注册页面:</strong>默认账户： abc@qq.com  密码：123456</li>
         <li><strong>数据上传:</strong>允许用户上传数据，格式要求 .cvs (仅实现前端部分)</li>
         <li><strong>自定义水质标准</strong></li>
