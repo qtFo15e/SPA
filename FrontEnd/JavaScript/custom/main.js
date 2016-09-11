@@ -886,6 +886,8 @@ $( function () {
 				var root_view = root_view_extend.selectedUIView()
 				root_model.get( "returnprimaryDataMap" ).call( root_model )
 				root_view.render()
+				
+				$( ".nano" ).nanoScroller();
 			},
 			"change #viewInput": function ( event ) {
 				var $ele = $(event.target)
@@ -2982,6 +2984,8 @@ $( function () {
 				primaryDataMap.tableSelectedDetectedStation = ""
 
 				self.renderUIList()
+				
+				$( ".nano" ).nanoScroller();
 			}
 		}
 	} )
@@ -3327,7 +3331,7 @@ $( function () {
 
 	var uploadData_model = new make_uploadData_model( {} )
 
-	// ？？？？数据的顺序问题， 上传的复写优先级问题， 日期的顺序问题， 每个值得有效性问题， 等待读取的样式问题，禁止上传的样式问题 未解决
+	// ？？？？数据的顺序问题， 上传的复写优先级问题， 日期的顺序问题， 每个值得有效性问题， 等待读取的样式问题，禁止上传的样式问题， 待实现
 	var make_uploadData_view = Backbone.View.extend( {
 		el: "#uploadDataModal",
 
@@ -3518,9 +3522,6 @@ $( function () {
 
 
 $( function () {
-
-	$( ".nano" ).nanoScroller();
-
 	$( '.selectpicker' )
 		.addClass( "btn-group-sm" )
 		.selectpicker( 'setStyle' );
