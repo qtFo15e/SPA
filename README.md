@@ -18,7 +18,7 @@
         <li>
             <strong>前端:</strong>
             <ul>
-                <li>underscore.js(函数式编程处理数据)</li>
+                <li>underscore.js( 函数式编程处理数据 )</li>
                 <li>backbone.js（MVC分层）</li>
                 <li>two.js（canvas插件）</li>
                 <li>jQuery（DOM操作）</li>
