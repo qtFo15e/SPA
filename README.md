@@ -18,12 +18,12 @@
         <li>
             <strong>前端:</strong>
             <ul>
-                <li>underscore.js</li>
-                <li>backbone.js</li>
-                <li>two.js</li>
+                <li>underscore.js(函数式编程处理数据)</li>
+                <li>backbone.js（MVC分层）</li>
+                <li>two.js（canvas插件）</li>
                 <li>jQuery</li>
-                <li>chart.js</li>
-                <li>bootstrap</li>
+                <li>chart.js（图表canvas插件）</li>
+                <li>bootstrap（UI和基本组件）</li>
                 <li>其他jQuery，bootstrap插件</li>
             </ul>
         </li>
